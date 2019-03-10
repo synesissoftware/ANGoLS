@@ -81,6 +81,39 @@ func GenerateSliceOfInt(size int, generator func(index int) (result int, err err
 	return
 }
 
+// GenerateSliceOfUInt() creates a slice of a given size and populates its
+// values with the given generator (which may be nil)
+func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err error)) (result []uint, err error) {
+
+	result	=	make([]uint, size)
+
+	if generator != nil {
+
+		for i := 0; size != i; i++ {
+
+			value, err := generator(i)
+
+			if err == nil {
+
+				result[i] = value
+			} else {
+
+				if SkipOneElement == err {
+
+				} else if SkipRemainingElements == err {
+
+					break
+				} else {
+
+					return nil, err
+				}
+			}
+		}
+	}
+
+	return
+}
+
 /* ///////////////////////////// end of file //////////////////////////// */
 
 

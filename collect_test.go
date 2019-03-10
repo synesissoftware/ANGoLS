@@ -161,3 +161,15 @@ func Benchmark_equal_ints_by_EqualSlice(b *testing.B) {
 	}
 }
 
+func Benchmark_equal_uints_by_EqualSlice(b *testing.B) {
+
+	fn			:=	func(index int) (uint, error) { return uint(index), nil }
+	ints_1, _	:=	angols.GenerateSliceOfUInt(int_equal_size, fn)
+	ints_2, _	:=	angols.GenerateSliceOfUInt(int_equal_size, fn)
+
+	for i := 0; i != int_equal_iterations; i++ {
+
+		_ = angols.EqualSlice(ints_1, ints_2)
+	}
+}
+
