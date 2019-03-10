@@ -3,7 +3,7 @@ package angols_test
 
 import (
 
-	angols "github.com/synesissoftware/ANGOLS"
+	angols "github.com/synesissoftware/ANGoLS"
 
 	"testing"
 )

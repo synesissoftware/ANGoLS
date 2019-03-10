@@ -3,7 +3,7 @@ package angols_test
 
 import (
 
-	"github.com/synesissoftware/ANGOLS"
+	"github.com/synesissoftware/ANGoLS"
 
 	"strings"
 	"testing"
@@ -148,6 +148,7 @@ func Benchmark_equal_ints_by_EqualSliceOfInt(b *testing.B) {
 		_ = angols.EqualSliceOfInt(ints_1, ints_2)
 	}
 }
+
 func Benchmark_equal_ints_by_EqualSlice(b *testing.B) {
 
 	fn			:=	func(index int) (int, error) { return index, nil }
