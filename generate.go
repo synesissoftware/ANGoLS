@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        version.go
+ * File:        generate.go
  *
- * Purpose:     Version file for ANGOLS
+ * Purpose:     Generator functions
  *
  * Created:     1st March 2019
  * Updated:     11th March 2019
@@ -40,14 +40,46 @@
 
 package angols
 
-const (
+import (
 
-	VersionMajor int16		=	0
-	VersionMinor int16		=	2
-	VersionRevision int16	=	1
-
-	Version		int64		=	int64(VersionMajor) << 48 | int64(VersionMinor) << 32 | int64(VersionRevision) << 16
+	"errors"
 )
+
+var SkipOneElement			=	errors.New("Skip one element")
+var SkipRemainingElements	=	errors.New("Skip remaining elements")
+
+// GenerateSliceOfInt() creates a slice of a given size and populates its
+// values with the given generator (which may be nil)
+func GenerateSliceOfInt(size int, generator func(index int) (result int, err error)) (result []int, err error) {
+
+	result	=	make([]int, size)
+
+	if generator != nil {
+
+		for i := 0; size != i; i++ {
+
+			value, err := generator(i)
+
+			if err == nil {
+
+				result[i] = value
+			} else {
+
+				if SkipOneElement == err {
+
+				} else if SkipRemainingElements == err {
+
+					break
+				} else {
+
+					return nil, err
+				}
+			}
+		}
+	}
+
+	return
+}
 
 /* ///////////////////////////// end of file //////////////////////////// */
 
