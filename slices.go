@@ -179,6 +179,30 @@ func SelectSliceOfUInt(input_slice []uint, selector func(index int, input_item u
 	return result[0:result_len], nil
 }
 
+func SelectSliceOfString(input_slice []string, selector func(index int, input_item string) (bool, error)) ([]string, error) {
+
+	input_len	:=	len(input_slice)
+	result		:=	make([]string, input_len)
+	result_len	:=	0
+
+	for i, v := range input_slice {
+
+		selected, err := selector(i, v)
+		if err != nil {
+
+			return nil, err
+		}
+
+		if selected {
+
+			result[result_len] = v
+			result_len++
+		}
+	}
+
+	return result[0:result_len], nil
+}
+
 
 // /////////////////////////////////////////////////////////////////////////
 // Equal*

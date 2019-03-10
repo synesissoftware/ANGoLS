@@ -5,6 +5,8 @@ import (
 
 	"github.com/synesissoftware/ANGoLS"
 
+	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -54,6 +56,35 @@ func Test_SelectSliceOfUInt_1(t *testing.T) {
 			expected	:=	[]uint{ 0, 2, 4, 6, 8 }
 
 			if !angols.EqualSliceOfUInt(expected, actual) {
+
+				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
+			}
+
+			if !angols.EqualSlice(expected, actual) {
+
+				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
+			}
+		}
+	}
+}
+
+func Test_SelectSliceOfString_1(t *testing.T) {
+
+	input, err	:=	angols.GenerateSliceOfString(10, func(index int) (string, error) { return strconv.Itoa(index), nil })
+	if err != nil {
+
+		t.Errorf("GenerateSliceOfString() failed: %v\n", err)
+	} else {
+
+		actual, err	:=	angols.SelectSliceOfString(input, func(index int, value string) (bool, error) { return strings.IndexAny(value[:1], "2457") >= 0, nil })
+		if err != nil {
+
+			t.Errorf("SelectSliceOfString() failed: %v\n", err)
+		} else {
+
+			expected	:=	[]string{ "2", "4", "5", "7" }
+
+			if !angols.EqualSliceOfString(expected, actual) {
 
 				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 			}
