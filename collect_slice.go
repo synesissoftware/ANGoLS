@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        generate.go
+ * File:        collect_slice.go
  *
- * Purpose:     Generator functions
+ * Purpose:     CollectSlice*() functions
  *
  * Created:     1st March 2019
  * Updated:     11th March 2019
@@ -42,106 +42,86 @@ package angols
 
 import (
 
-	"errors"
+	"fmt"
+	"reflect"
 )
 
-var SkipOneElement			=	errors.New("Skip one element")
-var SkipRemainingElements	=	errors.New("Skip remaining elements")
+// /////////////////////////////////////////////////////////////////////////
+// Collect*
 
-// GenerateSliceOfInt() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
-func GenerateSliceOfInt(size int, generator func(index int) (result int, err error)) (result []int, err error) {
+// This function maps an input slice of arbitrary type to an output slice
+// of type []interface{}
+func CollectSlice(input_slice interface{}, fn func(input_item interface{}) (interface{}, error)) (interface{}, error) {
 
-	result	=	make([]int, size)
+	sl_t := reflect.TypeOf(input_slice)
 
-	if generator != nil {
+	if reflect.Slice != sl_t.Kind() {
 
-		for i := 0; size != i; i++ {
+		msg := fmt.Sprintf("CollectSlice() called with input_slice of type %T; slice required", input_slice)
 
-			value, err := generator(i)
+		panic(msg)
+	}
 
-			if err == nil {
+	sl_v	:=	reflect.ValueOf(input_slice)
+	len		:=	sl_v.Len()
 
-				result[i] = value
-			} else {
+	result	:=	make([]interface{}, len)
 
-				if SkipOneElement == err {
+	for i := 0; len != i; i++ {
 
-				} else if SkipRemainingElements == err {
+		p	:=	sl_v.Index(i)
+		v	:=	p.Interface()
 
-					break
-				} else {
+		r, e := fn(v)
+		if e != nil {
 
-					return nil, err
-				}
-			}
+			return nil, e
 		}
+
+		result[i] = r
+	}
+
+	return result, nil
+}
+
+// CollectSliceOfInt
+func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_slice []int) {
+
+	result_slice = make([]int, len(input_slice))
+
+	for i, v := range input_slice {
+
+		result := fn(v)
+
+		result_slice[i] = result
 	}
 
 	return
 }
 
-// GenerateSliceOfUInt() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
-func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err error)) (result []uint, err error) {
+// CollectSliceOfFloat64
+func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) float64) (result_slice []float64) {
 
-	result	=	make([]uint, size)
+	result_slice = make([]float64, len(input_slice))
 
-	if generator != nil {
+	for i, v := range input_slice {
 
-		for i := 0; size != i; i++ {
+		result := fn(v)
 
-			value, err := generator(i)
-
-			if err == nil {
-
-				result[i] = value
-			} else {
-
-				if SkipOneElement == err {
-
-				} else if SkipRemainingElements == err {
-
-					break
-				} else {
-
-					return nil, err
-				}
-			}
-		}
+		result_slice[i] = result
 	}
 
 	return
 }
 
-// GenerateSliceOfString() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
-func GenerateSliceOfString(size int, generator func(index int) (result string, err error)) (result []string, err error) {
+// CollectSliceOfString
+func CollectSliceOfString(input_slice []string, fn func(input_item string) string) (result_slice []string) {
 
-	result	=	make([]string, size)
+	result_slice = make([]string, len(input_slice))
 
-	if generator != nil {
+	for i, s := range input_slice {
 
-		for i := 0; size != i; i++ {
-
-			value, err := generator(i)
-
-			if err == nil {
-
-				result[i] = value
-			} else {
-
-				if SkipOneElement == err {
-
-				} else if SkipRemainingElements == err {
-
-					break
-				} else {
-
-					return nil, err
-				}
-			}
-		}
+		result_slice[i] = fn(s)
 	}
 
 	return

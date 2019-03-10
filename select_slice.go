@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        version.go
+ * File:        select_slice.go
  *
- * Purpose:     Version file for ANGOLS
+ * Purpose:     SelectSlice*() functions
  *
  * Created:     1st March 2019
  * Updated:     11th March 2019
@@ -40,14 +40,84 @@
 
 package angols
 
-const (
+import (
 
-	VersionMajor int16		=	0
-	VersionMinor int16		=	4
-	VersionRevision int16	=	0
-
-	Version		int64		=	int64(VersionMajor) << 48 | int64(VersionMinor) << 32 | int64(VersionRevision) << 16
 )
+
+// /////////////////////////////////////////////////////////////////////////
+// Select*
+
+func SelectSliceOfInt(input_slice []int, selector func(index int, input_item int) (bool, error)) ([]int, error) {
+
+	input_len	:=	len(input_slice)
+	result		:=	make([]int, input_len)
+	result_len	:=	0
+
+	for i, v := range input_slice {
+
+		selected, err := selector(i, v)
+		if err != nil {
+
+			return nil, err
+		}
+
+		if selected {
+
+			result[result_len] = v
+			result_len++
+		}
+	}
+
+	return result[0:result_len], nil
+}
+
+func SelectSliceOfUInt(input_slice []uint, selector func(index int, input_item uint) (bool, error)) ([]uint, error) {
+
+	input_len	:=	len(input_slice)
+	result		:=	make([]uint, input_len)
+	result_len	:=	0
+
+	for i, v := range input_slice {
+
+		selected, err := selector(i, v)
+		if err != nil {
+
+			return nil, err
+		}
+
+		if selected {
+
+			result[result_len] = v
+			result_len++
+		}
+	}
+
+	return result[0:result_len], nil
+}
+
+func SelectSliceOfString(input_slice []string, selector func(index int, input_item string) (bool, error)) ([]string, error) {
+
+	input_len	:=	len(input_slice)
+	result		:=	make([]string, input_len)
+	result_len	:=	0
+
+	for i, v := range input_slice {
+
+		selected, err := selector(i, v)
+		if err != nil {
+
+			return nil, err
+		}
+
+		if selected {
+
+			result[result_len] = v
+			result_len++
+		}
+	}
+
+	return result[0:result_len], nil
+}
 
 /* ///////////////////////////// end of file //////////////////////////// */
 
