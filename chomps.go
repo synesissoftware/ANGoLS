@@ -1,9 +1,9 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:        version.go
+ * File:        chomps.go
  *
- * Purpose:     Version file for ANGOLS
+ * Purpose:     string chomp functions
  *
- * Created:     1st March 2019
+ * Created:     30th March 2019
  * Updated:     30th March 2019
  *
  * Home:        http://github.com/synesissoftware/ANGOLS
@@ -40,14 +40,60 @@
 
 package angols
 
-const (
+// StringChomp() takes a single string and returns a chomped version of it,
+// where chomping removes a single trailing '\n' character, a single
+// trailing '\r' character, or a single trailing sequence of "\r\n"
+func StringChomp(s string) (string) {
 
-	VersionMajor int16		=	0
-	VersionMinor int16		=	5
-	VersionRevision int16	=	0
+	switch l := len(s); l {
 
-	Version		int64		=	int64(VersionMajor) << 48 | int64(VersionMinor) << 32 | int64(VersionRevision) << 16
-)
+	case 0:
+
+		break
+	default:
+
+		if '\r' == s[l - 2] && '\n' == s[l - 1] {
+
+			s = s[0:l - 2]
+			break
+		}
+
+		fallthrough
+	case 1:
+
+		switch s[l - 1] {
+
+		case '\r', '\n':
+
+			s = s[0:l - 1]
+		}
+	}
+
+	return s
+}
+
+// StringChompAll() takes a single string and returns a fully/repeatedly
+// chomped version of, where full/repeated chomping removes all trailing
+// '\r' and/or '\n' characters
+func StringChompAll(s string) (string) {
+
+out:
+	for l := len(s); l > 0; {
+
+		switch s[l - 1] {
+
+		case '\r', '\n':
+
+			l--
+			s = s[0:l]
+		default:
+
+			break out
+		}
+	}
+
+	return s
+}
 
 /* ///////////////////////////// end of file //////////////////////////// */
 
