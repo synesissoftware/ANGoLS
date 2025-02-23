@@ -40,18 +40,16 @@
 
 package angols
 
-import (
-
-)
+import ()
 
 // /////////////////////////////////////////////////////////////////////////
 // Select*
 
 func SelectSliceOfInt(input_slice []int, selector func(index int, input_item int) (bool, error)) ([]int, error) {
 
-	input_len	:=	len(input_slice)
-	result		:=	make([]int, input_len)
-	result_len	:=	0
+	input_len := len(input_slice)
+	result := make([]int, input_len)
+	result_len := 0
 
 	for i, v := range input_slice {
 
@@ -73,9 +71,9 @@ func SelectSliceOfInt(input_slice []int, selector func(index int, input_item int
 
 func SelectSliceOfUInt(input_slice []uint, selector func(index int, input_item uint) (bool, error)) ([]uint, error) {
 
-	input_len	:=	len(input_slice)
-	result		:=	make([]uint, input_len)
-	result_len	:=	0
+	input_len := len(input_slice)
+	result := make([]uint, input_len)
+	result_len := 0
 
 	for i, v := range input_slice {
 
@@ -97,9 +95,9 @@ func SelectSliceOfUInt(input_slice []uint, selector func(index int, input_item u
 
 func SelectSliceOfString(input_slice []string, selector func(index int, input_item string) (bool, error)) ([]string, error) {
 
-	input_len	:=	len(input_slice)
-	result		:=	make([]string, input_len)
-	result_len	:=	0
+	input_len := len(input_slice)
+	result := make([]string, input_len)
+	result_len := 0
 
 	for i, v := range input_slice {
 
@@ -120,5 +118,3 @@ func SelectSliceOfString(input_slice []string, selector func(index int, input_it
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */
-
-

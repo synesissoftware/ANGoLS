@@ -41,18 +41,17 @@
 package angols
 
 import (
-
 	"errors"
 )
 
-var SkipOneElement			=	errors.New("Skip one element")
-var SkipRemainingElements	=	errors.New("Skip remaining elements")
+var SkipOneElement = errors.New("Skip one element")
+var SkipRemainingElements = errors.New("Skip remaining elements")
 
 // GenerateSliceOfInt() creates a slice of a given size and populates its
 // values with the given generator (which may be nil)
 func GenerateSliceOfInt(size int, generator func(index int) (result int, err error)) (result []int, err error) {
 
-	result	=	make([]int, size)
+	result = make([]int, size)
 
 	if generator != nil {
 
@@ -85,7 +84,7 @@ func GenerateSliceOfInt(size int, generator func(index int) (result int, err err
 // values with the given generator (which may be nil)
 func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err error)) (result []uint, err error) {
 
-	result	=	make([]uint, size)
+	result = make([]uint, size)
 
 	if generator != nil {
 
@@ -118,7 +117,7 @@ func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err e
 // values with the given generator (which may be nil)
 func GenerateSliceOfString(size int, generator func(index int) (result string, err error)) (result []string, err error) {
 
-	result	=	make([]string, size)
+	result = make([]string, size)
 
 	if generator != nil {
 
@@ -148,5 +147,3 @@ func GenerateSliceOfString(size int, generator func(index int) (result string, e
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */
-
-

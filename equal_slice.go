@@ -41,7 +41,6 @@
 package angols
 
 import (
-
 	"reflect"
 )
 
@@ -50,8 +49,8 @@ import (
 
 func EqualSliceOfInt(lhs, rhs []int) bool {
 
-	len_l	:=	len(lhs)
-	len_r	:=	len(rhs)
+	len_l := len(lhs)
+	len_r := len(rhs)
 
 	if len_l != len_r {
 
@@ -72,8 +71,8 @@ func EqualSliceOfInt(lhs, rhs []int) bool {
 
 func EqualSliceOfUInt(lhs, rhs []uint) bool {
 
-	len_l	:=	len(lhs)
-	len_r	:=	len(rhs)
+	len_l := len(lhs)
+	len_r := len(rhs)
 
 	if len_l != len_r {
 
@@ -94,8 +93,8 @@ func EqualSliceOfUInt(lhs, rhs []uint) bool {
 
 func EqualSliceOfFloat64(lhs, rhs []float64) bool {
 
-	len_l	:=	len(lhs)
-	len_r	:=	len(rhs)
+	len_l := len(lhs)
+	len_r := len(rhs)
 
 	if len_l != len_r {
 
@@ -116,8 +115,8 @@ func EqualSliceOfFloat64(lhs, rhs []float64) bool {
 
 func EqualSliceOfString(lhs, rhs []string) bool {
 
-	len_l	:=	len(lhs)
-	len_r	:=	len(rhs)
+	len_l := len(lhs)
+	len_r := len(rhs)
 
 	if len_l != len_r {
 
@@ -173,8 +172,8 @@ func EqualSlice(lhs, rhs interface{}) bool {
 
 	// Generic comparison
 
-	lhs_t	:=	reflect.TypeOf(lhs)
-	rhs_t	:=	reflect.TypeOf(rhs)
+	lhs_t := reflect.TypeOf(lhs)
+	rhs_t := reflect.TypeOf(rhs)
 
 	// check both are slices
 
@@ -190,19 +189,19 @@ func EqualSlice(lhs, rhs interface{}) bool {
 
 	// check element type
 
-	lhs_k	:=	lhs_t.Elem()
-	rhs_k	:=	rhs_t.Elem()
+	lhs_k := lhs_t.Elem()
+	rhs_k := rhs_t.Elem()
 
 	if lhs_k != rhs_k {
 
 		return false
 	} else {
 
-		lhs_v	:=	reflect.ValueOf(lhs)
-		rhs_v	:=	reflect.ValueOf(rhs)
+		lhs_v := reflect.ValueOf(lhs)
+		rhs_v := reflect.ValueOf(rhs)
 
-		lhs_n	:=	lhs_v.Len()
-		rhs_n	:=	rhs_v.Len()
+		lhs_n := lhs_v.Len()
+		rhs_n := rhs_v.Len()
 
 		if lhs_n != rhs_n {
 
@@ -222,5 +221,3 @@ func EqualSlice(lhs, rhs interface{}) bool {
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */
-
-

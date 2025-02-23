@@ -41,7 +41,6 @@
 package angols
 
 import (
-
 	"fmt"
 	"reflect"
 )
@@ -62,15 +61,15 @@ func CollectSlice(input_slice interface{}, fn func(input_item interface{}) (inte
 		panic(msg)
 	}
 
-	sl_v	:=	reflect.ValueOf(input_slice)
-	len		:=	sl_v.Len()
+	sl_v := reflect.ValueOf(input_slice)
+	len := sl_v.Len()
 
-	result	:=	make([]interface{}, len)
+	result := make([]interface{}, len)
 
 	for i := 0; len != i; i++ {
 
-		p	:=	sl_v.Index(i)
-		v	:=	p.Interface()
+		p := sl_v.Index(i)
+		v := p.Interface()
 
 		r, e := fn(v)
 		if e != nil {
@@ -128,5 +127,3 @@ func CollectSliceOfString(input_slice []string, fn func(input_item string) strin
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */
-
-

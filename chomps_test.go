@@ -1,8 +1,6 @@
-
 package angols_test
 
 import (
-
 	angols "github.com/synesissoftware/ANGoLS"
 	stegol "github.com/synesissoftware/STEGoL"
 
@@ -50,4 +48,3 @@ func Test_StringChompAll_1(t *testing.T) {
 	stegol.CheckStringEqual(t, "abc", angols.StringChompAll("abc\n\n"))
 	stegol.CheckStringEqual(t, "abc", angols.StringChompAll("abc\n\r\n"))
 }
-

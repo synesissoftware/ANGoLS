@@ -43,7 +43,7 @@ package angols
 // StringChomp() takes a single string and returns a chomped version of it,
 // where chomping removes a single trailing '\n' character, a single
 // trailing '\r' character, or a single trailing sequence of "\r\n"
-func StringChomp(s string) (string) {
+func StringChomp(s string) string {
 
 	switch l := len(s); l {
 
@@ -52,20 +52,20 @@ func StringChomp(s string) (string) {
 		break
 	default:
 
-		if '\r' == s[l - 2] && '\n' == s[l - 1] {
+		if '\r' == s[l-2] && '\n' == s[l-1] {
 
-			s = s[0:l - 2]
+			s = s[0 : l-2]
 			break
 		}
 
 		fallthrough
 	case 1:
 
-		switch s[l - 1] {
+		switch s[l-1] {
 
 		case '\r', '\n':
 
-			s = s[0:l - 1]
+			s = s[0 : l-1]
 		}
 	}
 
@@ -75,12 +75,12 @@ func StringChomp(s string) (string) {
 // StringChompAll() takes a single string and returns a fully/repeatedly
 // chomped version of, where full/repeated chomping removes all trailing
 // '\r' and/or '\n' characters
-func StringChompAll(s string) (string) {
+func StringChompAll(s string) string {
 
 out:
 	for l := len(s); l > 0; {
 
-		switch s[l - 1] {
+		switch s[l-1] {
 
 		case '\r', '\n':
 
@@ -96,5 +96,3 @@ out:
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */
-
-
