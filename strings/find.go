@@ -1,10 +1,16 @@
+// Copyright 2019-2025 Matthew Wilson and Synesis Information Systems. All
+// rights reserved. Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
+
+/*
+ * Created: 24th February 2025
+ * Updated: 24th February 2025
+ */
+
 package strings
 
 import (
-	"fmt"
-
 	"github.com/synesissoftware/ANGoLS/_std_strings"
-	debug "github.com/synesissoftware/Diagnosticism.Go/debug"
 )
 
 /*
