@@ -4,10 +4,10 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 23rd February 2025
+ * Updated: 24th February 2025
  */
 
-package angols
+package slices
 
 import (
 	"errors"

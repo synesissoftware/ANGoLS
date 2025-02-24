@@ -1,7 +1,7 @@
 package angols_test
 
 import (
-	"github.com/synesissoftware/ANGoLS"
+	"github.com/synesissoftware/ANGoLS/slices"
 
 	"strconv"
 	"strings"
@@ -10,13 +10,13 @@ import (
 
 func Test_SelectSliceOfInt_1(t *testing.T) {
 
-	input, err := angols.GenerateSliceOfInt(10, func(index int) (int, error) { return index, nil })
+	input, err := slices.GenerateSliceOfInt(10, func(index int) (int, error) { return index, nil })
 	if err != nil {
 
 		t.Errorf("GenerateSliceOfInt() failed: %v\n", err)
 	} else {
 
-		actual, err := angols.SelectSliceOfInt(input, func(index int, value int) (bool, error) { return 0 == (value % 2), nil })
+		actual, err := slices.SelectSliceOfInt(input, func(index int, value int) (bool, error) { return 0 == (value % 2), nil })
 		if err != nil {
 
 			t.Errorf("SelectSliceOfInt() failed: %v\n", err)
@@ -24,12 +24,12 @@ func Test_SelectSliceOfInt_1(t *testing.T) {
 
 			expected := []int{0, 2, 4, 6, 8}
 
-			if !angols.EqualSliceOfInt(expected, actual) {
+			if !slices.EqualSliceOfInt(expected, actual) {
 
 				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 			}
 
-			if !angols.EqualSlice(expected, actual) {
+			if !slices.EqualSlice(expected, actual) {
 
 				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 			}
@@ -39,13 +39,13 @@ func Test_SelectSliceOfInt_1(t *testing.T) {
 
 func Test_SelectSliceOfUInt_1(t *testing.T) {
 
-	input, err := angols.GenerateSliceOfUInt(10, func(index int) (uint, error) { return uint(index), nil })
+	input, err := slices.GenerateSliceOfUInt(10, func(index int) (uint, error) { return uint(index), nil })
 	if err != nil {
 
 		t.Errorf("GenerateSliceOfUInt() failed: %v\n", err)
 	} else {
 
-		actual, err := angols.SelectSliceOfUInt(input, func(index int, value uint) (bool, error) { return 0 == (value % 2), nil })
+		actual, err := slices.SelectSliceOfUInt(input, func(index int, value uint) (bool, error) { return 0 == (value % 2), nil })
 		if err != nil {
 
 			t.Errorf("SelectSliceOfUInt() failed: %v\n", err)
@@ -53,12 +53,12 @@ func Test_SelectSliceOfUInt_1(t *testing.T) {
 
 			expected := []uint{0, 2, 4, 6, 8}
 
-			if !angols.EqualSliceOfUInt(expected, actual) {
+			if !slices.EqualSliceOfUInt(expected, actual) {
 
 				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 			}
 
-			if !angols.EqualSlice(expected, actual) {
+			if !slices.EqualSlice(expected, actual) {
 
 				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 			}
@@ -68,13 +68,13 @@ func Test_SelectSliceOfUInt_1(t *testing.T) {
 
 func Test_SelectSliceOfString_1(t *testing.T) {
 
-	input, err := angols.GenerateSliceOfString(10, func(index int) (string, error) { return strconv.Itoa(index), nil })
+	input, err := slices.GenerateSliceOfString(10, func(index int) (string, error) { return strconv.Itoa(index), nil })
 	if err != nil {
 
 		t.Errorf("GenerateSliceOfString() failed: %v\n", err)
 	} else {
 
-		actual, err := angols.SelectSliceOfString(input, func(index int, value string) (bool, error) { return strings.IndexAny(value[:1], "2457") >= 0, nil })
+		actual, err := slices.SelectSliceOfString(input, func(index int, value string) (bool, error) { return strings.IndexAny(value[:1], "2457") >= 0, nil })
 		if err != nil {
 
 			t.Errorf("SelectSliceOfString() failed: %v\n", err)
@@ -82,12 +82,12 @@ func Test_SelectSliceOfString_1(t *testing.T) {
 
 			expected := []string{"2", "4", "5", "7"}
 
-			if !angols.EqualSliceOfString(expected, actual) {
+			if !slices.EqualSliceOfString(expected, actual) {
 
 				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 			}
 
-			if !angols.EqualSlice(expected, actual) {
+			if !slices.EqualSlice(expected, actual) {
 
 				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 			}

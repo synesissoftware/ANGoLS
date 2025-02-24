@@ -1,7 +1,7 @@
 package angols_test
 
 import (
-	"github.com/synesissoftware/ANGoLS"
+	"github.com/synesissoftware/ANGoLS/slices"
 
 	"strings"
 	"testing"
@@ -31,7 +31,7 @@ func Test_Collect_Array_1_ints_to_ints(t *testing.T) {
 
 	ints := []int{1, 2, 3}
 
-	r, err := angols.CollectSlice(ints, fn)
+	r, err := slices.CollectSlice(ints, fn)
 	if err != nil {
 
 		t.Errorf("Collect() failed: %v", err)
@@ -73,14 +73,14 @@ func Test_CollectSliceOfInt_1(t *testing.T) {
 
 	input_slice := []int{-1, 0, -2, 3}
 	expected := []int{1, 0, 2, 3}
-	actual := angols.CollectSliceOfInt(input_slice, fn)
+	actual := slices.CollectSliceOfInt(input_slice, fn)
 
-	if !angols.EqualSliceOfInt(expected, actual) {
+	if !slices.EqualSliceOfInt(expected, actual) {
 
 		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 	}
 
-	if !angols.EqualSlice(expected, actual) {
+	if !slices.EqualSlice(expected, actual) {
 
 		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 	}
@@ -100,14 +100,14 @@ func Test_CollectSliceOfFloat64_1(t *testing.T) {
 
 	input_slice := []float64{-1.1, 0, -2.1, 3.1}
 	expected := []float64{1.1, 0, 2.1, 3.1}
-	actual := angols.CollectSliceOfFloat64(input_slice, fn)
+	actual := slices.CollectSliceOfFloat64(input_slice, fn)
 
-	if !angols.EqualSliceOfFloat64(expected, actual) {
+	if !slices.EqualSliceOfFloat64(expected, actual) {
 
 		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 	}
 
-	if !angols.EqualSlice(expected, actual) {
+	if !slices.EqualSlice(expected, actual) {
 
 		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 	}
@@ -117,14 +117,14 @@ func Test_CollectSliceOfString_1(t *testing.T) {
 
 	input_slice := []string{"abc", "", "def", "G"}
 	expected := []string{"ABC", "", "DEF", "G"}
-	actual := angols.CollectSliceOfString(input_slice, func(input string) string { return strings.ToUpper(input) })
+	actual := slices.CollectSliceOfString(input_slice, func(input string) string { return strings.ToUpper(input) })
 
-	if !angols.EqualSliceOfString(expected, actual) {
+	if !slices.EqualSliceOfString(expected, actual) {
 
 		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 	}
 
-	if !angols.EqualSlice(expected, actual) {
+	if !slices.EqualSlice(expected, actual) {
 
 		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 	}
@@ -135,35 +135,35 @@ func Test_CollectSliceOfString_1(t *testing.T) {
 func Benchmark_equal_ints_by_EqualSliceOfInt(b *testing.B) {
 
 	fn := func(index int) (int, error) { return index, nil }
-	ints_1, _ := angols.GenerateSliceOfInt(int_equal_size, fn)
-	ints_2, _ := angols.GenerateSliceOfInt(int_equal_size, fn)
+	ints_1, _ := slices.GenerateSliceOfInt(int_equal_size, fn)
+	ints_2, _ := slices.GenerateSliceOfInt(int_equal_size, fn)
 
 	for i := 0; i != int_equal_iterations; i++ {
 
-		_ = angols.EqualSliceOfInt(ints_1, ints_2)
+		_ = slices.EqualSliceOfInt(ints_1, ints_2)
 	}
 }
 
 func Benchmark_equal_ints_by_EqualSlice(b *testing.B) {
 
 	fn := func(index int) (int, error) { return index, nil }
-	ints_1, _ := angols.GenerateSliceOfInt(int_equal_size, fn)
-	ints_2, _ := angols.GenerateSliceOfInt(int_equal_size, fn)
+	ints_1, _ := slices.GenerateSliceOfInt(int_equal_size, fn)
+	ints_2, _ := slices.GenerateSliceOfInt(int_equal_size, fn)
 
 	for i := 0; i != int_equal_iterations; i++ {
 
-		_ = angols.EqualSlice(ints_1, ints_2)
+		_ = slices.EqualSlice(ints_1, ints_2)
 	}
 }
 
 func Benchmark_equal_uints_by_EqualSlice(b *testing.B) {
 
 	fn := func(index int) (uint, error) { return uint(index), nil }
-	ints_1, _ := angols.GenerateSliceOfUInt(int_equal_size, fn)
-	ints_2, _ := angols.GenerateSliceOfUInt(int_equal_size, fn)
+	ints_1, _ := slices.GenerateSliceOfUInt(int_equal_size, fn)
+	ints_2, _ := slices.GenerateSliceOfUInt(int_equal_size, fn)
 
 	for i := 0; i != int_equal_iterations; i++ {
 
-		_ = angols.EqualSlice(ints_1, ints_2)
+		_ = slices.EqualSlice(ints_1, ints_2)
 	}
 }
