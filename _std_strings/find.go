@@ -21,3 +21,7 @@ func PRIVATE_IndexByte(s string, c byte) int {
 func PRIVATE_IndexFunc(s string, f func(rune) bool) int {
 	return strings.IndexFunc(s, f)
 }
+
+func PRIVATE_IndexRune(s string, c rune) int {
+	return strings.IndexRune(s, c)
+}

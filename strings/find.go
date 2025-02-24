@@ -22,6 +22,8 @@ import (
  *                                          |                                          | strings.IndexAnyAfter(s, chars, string, ix int)      |
  *                                          |                                          | strings.IndexByteAfter(s string, c byte, ix int)     |
  *                                          |                                          | strings.IndexFuncAfter(s string, fn, ix int)         |
+ *                                          |                                          |                                                      |
+ *                                          |                                          | strings.IndexNotAnyAfter(s, chars, string, ix int)   |
  */
 
 // Finds the index of the given substring in the given string, starting from
@@ -121,3 +123,27 @@ func IndexFuncAfter(s string, f func(rune) bool, ix int) int {
 	}
 }
 
+// T.B.C.
+func IndexNotAnyAfter(s string, chars string, ix int) int {
+	if ix < -1 {
+		ix = -1
+	}
+
+	off := ix + 1
+
+	if off > len(s) {
+		return -1
+	}
+
+	if 0 == len(chars) {
+		return 0
+	}
+
+	for ix2, c := range s[off:] {
+		if -1 == _std_strings.PRIVATE_IndexRune(chars, c) {
+			return ix2 + off
+		}
+	}
+
+	return -1
+}

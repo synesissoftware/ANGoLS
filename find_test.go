@@ -289,3 +289,26 @@ func Test_IndexFuncAfter(t *testing.T) {
 		require.Equal(t, -1, strings.IndexFuncAfter("abcdefghijklmnopqrstuvwxyz", is_not_ASCII_vowel, 27))
 	}
 }
+
+func Test_IndexNotAnyAfter(t *testing.T) {
+
+	{
+		require.Equal(t, 0, strings.IndexNotAnyAfter("", "", -1))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("", "", 0))
+	}
+
+	{
+		require.Equal(t, -1, strings.IndexNotAnyAfter("abc", "abc", -1))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("abc", "abc", 0))
+
+		require.Equal(t, 2, strings.IndexNotAnyAfter("abc", "ab", -1))
+		require.Equal(t, 2, strings.IndexNotAnyAfter("abc", "ab", 0))
+		require.Equal(t, 2, strings.IndexNotAnyAfter("abc", "ab", +1))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("abc", "ab", +2))
+
+		require.Equal(t, 0, strings.IndexNotAnyAfter("abc", "bc", -1))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("abc", "bc", 0))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("abc", "bc", +1))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("abc", "bc", +2))
+	}
+}
