@@ -1,7 +1,7 @@
 package angols_test
 
 import (
-	angols "github.com/synesissoftware/ANGoLS"
+	"github.com/synesissoftware/ANGoLS/slices"
 
 	"testing"
 )
@@ -9,7 +9,7 @@ import (
 func Test_GenerateSliceOfInt_1_nil_generator(t *testing.T) {
 
 	req_len := 1001
-	ints, err := angols.GenerateSliceOfInt(req_len, nil)
+	ints, err := slices.GenerateSliceOfInt(req_len, nil)
 	if err != nil {
 
 	} else {
@@ -32,7 +32,7 @@ func Test_GenerateSliceOfInt_1_nil_generator(t *testing.T) {
 func Test_GenerateSliceOfInt_2_setting_all_to_const(t *testing.T) {
 
 	req_len := 1001
-	ints, err := angols.GenerateSliceOfInt(req_len, func(index int) (int, error) { return 1, nil })
+	ints, err := slices.GenerateSliceOfInt(req_len, func(index int) (int, error) { return 1, nil })
 	if err != nil {
 
 	} else {
@@ -55,7 +55,7 @@ func Test_GenerateSliceOfInt_2_setting_all_to_const(t *testing.T) {
 func Test_GenerateSliceOfInt_3_doubling_index(t *testing.T) {
 
 	req_len := 1001
-	ints, err := angols.GenerateSliceOfInt(req_len, func(index int) (int, error) { return 2 * index, nil })
+	ints, err := slices.GenerateSliceOfInt(req_len, func(index int) (int, error) { return 2 * index, nil })
 	if err != nil {
 
 	} else {
