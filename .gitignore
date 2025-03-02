@@ -8,8 +8,12 @@
 *.tmp
 
 # Folders
+
 _obj
 _test
+
+/scratch
+
 
 # Architecture specific extensions/prefixes
 *.[568vq]
