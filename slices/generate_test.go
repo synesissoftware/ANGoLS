@@ -1,4 +1,4 @@
-package angols_test
+package slices_test
 
 import (
 	"github.com/synesissoftware/ANGoLS/slices"

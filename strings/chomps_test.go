@@ -1,4 +1,4 @@
-package angols_test
+package strings_test
 
 import (
 	strings "github.com/synesissoftware/ANGoLS/strings"

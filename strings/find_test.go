@@ -1,4 +1,4 @@
-package angols_test
+package strings_test
 
 import (
 	"github.com/stretchr/testify/require"
