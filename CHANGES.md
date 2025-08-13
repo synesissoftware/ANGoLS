@@ -1,5 +1,10 @@
 # **ANGoLS** Changes
 
+## 0.6.0 (alpha 3) - 14th August 2025
+
+* tidying;
+
+
 ## 0.6.0 (alpha 2) - 24th February 2025
 
 * added **examples/libver.go**;
