@@ -1,5 +1,11 @@
 # **ANGoLS** Changes
 
+## 0.6.0 (alpha 2) - 24th February 2025
+
+* added **examples/libver.go**;
+* boilerplate;
+
+
 ## 0.6.0 (alpha 1) - 24th February 2025
 
 * refactored all slice functions into **slices** package;

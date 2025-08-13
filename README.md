@@ -1,5 +1,11 @@
 # ANGoLS <!-- omit in toc -->
 
+[![GitHub release](https://img.shields.io/github/v/release/synesissoftware/ANGoLS.svg)](https://github.com/synesissoftware/ANGoLS/releases/latest)
+[![Go Reference](https://pkg.go.dev/badge/github.com/synesissoftware/ANGoLS.svg)](https://pkg.go.dev/github.com/synesissoftware/ANGoLS)
+[![Go Report Card](https://goreportcard.com/badge/github.com/synesissoftware/ANGoLS)](https://goreportcard.com/report/github.com/synesissoftware/ANGoLS)
+[![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/ANGoLS)](https://github.com/synesissoftware/ANGoLS/commits/master)
+
+
 **A**gorithms **N**ot in **Go** **L**anguage **S**tandard library
 
 
@@ -15,11 +21,11 @@ T.B.C.
 - [Components](#components)
 - [Examples](#examples)
 - [Project Information](#project-information)
-  - [Where to get help](#where-to-get-help)
-  - [Contribution guidelines](#contribution-guidelines)
-  - [Dependencies](#dependencies)
-  - [Related projects](#related-projects)
-  - [License](#license)
+	- [Where to get help](#where-to-get-help)
+	- [Contribution guidelines](#contribution-guidelines)
+	- [Dependencies](#dependencies)
+	- [Related projects](#related-projects)
+	- [License](#license)
 
 
 ## Installation
