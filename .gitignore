@@ -1,25 +1,30 @@
 # directories (by name)
 
-.DS_Store
+/scratch/
+
 
 # directories (by pattern)
 
+
 # files (by name)
+
+.DS_Store
+
 
 # files (by pattern)
 
 *~
-*~
+*.[568vq]
 *.a
-*.dll
 *.dylib
 *.exe
-*.exe~
+*.lib
 *.o
 *.out
 *.prof
 *.so
-*.swp
+*.sw[pon]
 *.test
 *.tmp
+*.zip
 

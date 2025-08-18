@@ -18,8 +18,8 @@ import (
 // Collect*
 
 // This function maps an input slice of arbitrary type to an output slice
-// of type []interface{}
-func CollectSlice(input_slice interface{}, fn func(input_item interface{}) (interface{}, error)) (interface{}, error) {
+// of type []any
+func CollectSlice(input_slice any, fn func(input_item any) (any, error)) (any, error) {
 
 	sl_t := reflect.TypeOf(input_slice)
 
@@ -33,7 +33,7 @@ func CollectSlice(input_slice interface{}, fn func(input_item interface{}) (inte
 	sl_v := reflect.ValueOf(input_slice)
 	len := sl_v.Len()
 
-	result := make([]interface{}, len)
+	result := make([]any, len)
 
 	for i := 0; len != i; i++ {
 

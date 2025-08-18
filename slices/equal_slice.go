@@ -104,7 +104,7 @@ func EqualSliceOfString(lhs, rhs []string) bool {
 	}
 }
 
-func EqualSlice(lhs, rhs interface{}) bool {
+func EqualSlice(lhs, rhs any) bool {
 
 	// Check for typed variants
 

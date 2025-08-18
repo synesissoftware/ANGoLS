@@ -1,5 +1,13 @@
 # **ANGoLS** Changes
 
+## 0.6.0 (beta 1) - 18th August 2025
+
+* GitHub Actions;
+* `interface{}` => `any`;
+* boilerplate;
+* documentation;
+
+
 ## 0.6.0 (alpha 3) - 14th August 2025
 
 * tidying;

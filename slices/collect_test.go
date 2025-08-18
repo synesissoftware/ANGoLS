@@ -16,7 +16,7 @@ const (
 
 func Test_Collect_Array_1_ints_to_ints(t *testing.T) {
 
-	fn := func(input interface{}) (interface{}, error) {
+	fn := func(input any) (any, error) {
 
 		if i, ok := input.(int); ok {
 
@@ -37,9 +37,9 @@ func Test_Collect_Array_1_ints_to_ints(t *testing.T) {
 		t.Errorf("Collect() failed: %v", err)
 	} else {
 
-		if si, ok := r.([]interface{}); !ok {
+		if si, ok := r.([]any); !ok {
 
-			t.Errorf("Collect() failed: result is not of type []interface{}\n")
+			t.Errorf("Collect() failed: result is not of type []any\n")
 		} else {
 
 			for ix, v := range si {
