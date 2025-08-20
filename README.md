@@ -102,20 +102,6 @@ func SelectSliceOfString(input_slice []string, selector func(index int, input_it
 ```Go
 // in "github.com/synesissoftware/ANGoLS/strings"
 
-// StringChomp() takes a single string and returns a chomped version of it,
-// where chomping removes a single trailing '\n' character, a single
-// trailing '\r' character, or a single trailing sequence of "\r\n"
-func StringChomp(s string) string
-
-// StringChompAll() takes a single string and returns a fully/repeatedly
-// chomped version of, where full/repeated chomping removes all trailing
-// '\r' and/or '\n' characters
-func StringChompAll(s string) string
-```
-
-```Go
-// in "github.com/synesissoftware/ANGoLS/strings"
-
 // Finds the index of the given substring in the given string, starting from
 // the position after the given index. -1 is returned if the find is not
 // successful.
@@ -182,7 +168,122 @@ func IndexFuncAfter(s string, f func(rune) bool, ix int) int
 func IndexNotAnyAfter(s string, chars string, ix int) int
 ```
 
-T.B.C.
+```Go
+// in "github.com/synesissoftware/ANGoLS/strings"
+
+// SplitAfterByte slices a string into all substings after each instance of
+// the byte sep and returns a slice of those substrings.
+//
+// If s does not contain sep, SplitAfterByte returns a slice of length 1
+// whose only element is s.
+//
+// It is equivalent to [SplitAfterByteN] with a count of -1.
+func SplitAfterByte(s string, sep byte) []string
+
+// SplitAfterByteN slices s into substrings after each instance of the byte
+// sep and returns a slice of those substrings.
+//
+// ix determines the number of substrings to return:
+//   - n > 0: at most n substrings; the last substring being the unsplit
+//     remainder;
+//   - n == 0: the result is nil (zero substrings);
+//   - n < 0: all substrings.
+func SplitAfterByteN(s string, sep byte, ix int) []string
+
+// SplitAfterRune slices a string into all substings after each instance of
+// the rune sep and returns a slice of those substrings.
+//
+// If s does not contain sep, SplitAfterRune returns a slice of length 1
+// whose only element is s.
+//
+// It is equivalent to [SplitAfterRuneN] with a count of -1.
+func SplitAfterRune(s string, sep rune) []string
+
+// SplitAfterRuneN slices s into substrings after each instance of the rune
+// sep and returns a slice of those substrings.
+//
+// ix determines the number of substrings to return:
+//   - n > 0: at most n substrings; the last substring being the unsplit
+//     remainder;
+//   - n == 0: the result is nil (zero substrings);
+//   - n < 0: all substrings.
+func SplitAfterRuneN(s string, sep rune, ix int) []string
+
+// SplitAfterAny slices a string into all substings after each instance of
+// any of the runes in chars and returns a slice of those substrings.
+//
+// If s does not contain any of the runes in chars and chars is not empty,
+// SplitAfterAny returns a slice of length 1 whose only element is s.
+//
+// It is equivalent to [SplitAfterAnyN] with a count of -1.
+func SplitAfterAny(s, chars string) []string
+
+// SplitAfterAnyN slices s into substrings after each instance of any of the
+// runes in chars and returns a slice of those substrings.
+//
+// ix determines the number of substrings to return:
+//   - n > 0: at most n substrings; the last substring being the unsplit
+//     remainder;
+//   - n == 0: the result is nil (zero substrings);
+//   - n < 0: all substrings.
+func SplitAfterAnyN(s, chars string, ix int) []string
+
+// SplitAfterAnyBytes slices a string into all substings after each
+// instance of any of the bytes in seps and returns a slice of those
+// substrings.
+//
+// If s does not contain any of the bytes in seps and seps is not empty,
+// SplitAfterAnyBytes returns a slice of length 1 whose only element is s.
+//
+// It is equivalent to [SplitAfterAnyBytesN] with a count of -1.
+func SplitAfterAnyBytes(s string, seps []byte) []string
+
+// SplitAfterAnyBytesN slices a string into all substings after each
+// instance of any of the bytes in seps and returns a slice of those
+// substrings.
+//
+// ix determines the number of substrings to return:
+//   - n > 0: at most n substrings; the last substring being the unsplit
+//     remainder;
+//   - n == 0: the result is nil (zero substrings);
+//   - n < 0: all substrings.
+func SplitAfterAnyBytesN(s string, seps []byte, ix int) []string
+
+// SplitAfterAnyRunes slices a string into all substings after each
+// instance of any of the runes in seps and returns a slice of those
+// substrings.
+//
+// If s does not contain any of the runes in seps and seps is not empty,
+// SplitAfterAnyRunes returns a slice of length 1 whose only element is s.
+//
+// It is equivalent to [SplitAfterAnyN] with a count of -1.
+func SplitAfterAnyRunes(s string, seps []rune) []string
+
+// SplitAfterAnyRunesN slices a string into all substings after each
+// instance of any of the runes in seps and returns a slice of those
+// substrings.
+//
+// ix determines the number of substrings to return:
+//   - n > 0: at most n substrings; the last substring being the unsplit
+//     remainder;
+//   - n == 0: the result is nil (zero substrings);
+//   - n < 0: all substrings.
+func SplitAfterAnyRunesN(s string, seps []rune, ix int) []string
+```
+
+```Go
+// in "github.com/synesissoftware/ANGoLS/strings"
+
+// StringChomp() takes a single string and returns a chomped version of it,
+// where chomping removes a single trailing '\n' character, a single
+// trailing '\r' character, or a single trailing sequence of "\r\n"
+func StringChomp(s string) string
+
+// StringChompAll() takes a single string and returns a fully/repeatedly
+// chomped version of, where full/repeated chomping removes all trailing
+// '\r' and/or '\n' characters
+func StringChompAll(s string) string
+```
 
 
 ## Examples

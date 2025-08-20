@@ -1,5 +1,10 @@
 # **ANGoLS** Changes
 
+## 0.7.0 (alpha 1) - 20th August 2025
+
+* added `SplitAfterByte()`, `SplitAfterByteN()` ,`SplitAfterRune()` ,`SplitAfterRuneN()`, `SplitAfterAny()`, `SplitAfterAnyN()`, `SplitAfterAnyBytes()`, `SplitAfterAnyBytesN()`, `SplitAfterAnyRunes()`, `SplitAfterAnyRunesN()`;
+
+
 ## 0.6.0 - 20th August 2025
 
 * documentation;
