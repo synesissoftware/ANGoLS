@@ -64,6 +64,17 @@ func IndexAfter(s string, sf string, ix int) int {
 	}
 }
 
+// Finds the index of the first instance of any character in chars, starting
+// from the position after the given index. -1 is returned if the find is
+// not successful.
+//
+// To search from the start of the string, specify the value -1 for the
+// index. Any index value less than -1 will be treated as if -1 specified.
+// Any index value greater than the size of the string will result in a
+// return value of -1.
+//
+// The returned value reflects the position of the found character relative
+// to the start of the string, not from the index.
 func IndexAnyAfter(s string, chars string, ix int) int {
 	if ix < -1 {
 		ix = -1
@@ -84,7 +95,17 @@ func IndexAnyAfter(s string, chars string, ix int) int {
 	}
 }
 
-// T.B.C.
+// Finds the index of the given byte in the given string, starting from the
+// position after the given index. -1 is returned if the find is not
+// successful.
+//
+// To search from the start of the string, specifying the value -1 for the
+// index. Any index value less than -1 will be treated as if -1 specified.
+// Any index value greater than the size of the string will result in a
+// return value of -1.
+//
+// The returned value reflects the position of the found byte relative to
+// the start of the string, not from the index.
 func IndexByteAfter(s string, c byte, ix int) int {
 
 	if ix < -1 {
@@ -106,7 +127,17 @@ func IndexByteAfter(s string, c byte, ix int) int {
 	}
 }
 
-// T.B.C.
+// Finds the index of a character identified by the given function, starting
+// from the position after the given index. -1 is returned if the find is
+// not successful.
+//
+// To search from the start of the string, specifying the value -1 for the
+// index. Any index value less than -1 will be treated as if -1 specified.
+// Any index value greater than the size of the string will result in a
+// return value of -1.
+//
+// The returned value reflects the position of the identified character
+// relative to the start of the string, not from the index.
 func IndexFuncAfter(s string, f func(rune) bool, ix int) int {
 
 	if ix < -1 {
@@ -129,7 +160,17 @@ func IndexFuncAfter(s string, f func(rune) bool, ix int) int {
 	}
 }
 
-// T.B.C.
+// Finds the index of the first instance of any character not in chars,
+// starting from the position after the given index. -1 is returned if the
+// find is not successful.
+//
+// To search from the start of the string, specify the value -1 for the
+// index. Any index value less than -1 will be treated as if -1 specified.
+// Any index value greater than the size of the string will result in a
+// return value of -1.
+//
+// The returned value reflects the position of the found character relative
+// to the start of the string, not from the index.
 func IndexNotAnyAfter(s string, chars string, ix int) int {
 	if ix < -1 {
 		ix = -1

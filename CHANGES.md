@@ -1,5 +1,10 @@
 # **ANGoLS** Changes
 
+## 0.6.0 - 20th August 2025
+
+* documentation;
+
+
 ## 0.6.0 (beta 1) - 18th August 2025
 
 * GitHub Actions;

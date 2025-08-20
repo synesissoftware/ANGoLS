@@ -311,4 +311,14 @@ func Test_IndexNotAnyAfter(t *testing.T) {
 		require.Equal(t, -1, strings.IndexNotAnyAfter("abc", "bc", +1))
 		require.Equal(t, -1, strings.IndexNotAnyAfter("abc", "bc", +2))
 	}
+
+	{
+		require.Equal(t, -1, strings.IndexNotAnyAfter(".", "./", -1))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("./", "./", -1))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("..", "./", -1))
+		require.Equal(t, -1, strings.IndexNotAnyAfter("../", "./", -1))
+
+		require.Equal(t, 1, strings.IndexNotAnyAfter(".a", "./", -1))
+		require.Equal(t, 2, strings.IndexNotAnyAfter("./a", "./", -1))
+	}
 }
