@@ -10,11 +10,6 @@
 **A**gorithms **N**ot in **Go** **L**anguage **S**tandard library
 
 
-## Introduction
-
-T.B.C.
-
-
 ## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
@@ -30,6 +25,40 @@ T.B.C.
 		- [Development/Testing Dependencies](#developmenttesting-dependencies)
 	- [Related projects](#related-projects)
 	- [License](#license)
+
+
+## Introduction
+
+As the name implies, there are (or were at the time of writing) commonly required operations/algorithms that are not provided in the language standard library. This library is a slowly growing collection of such things. (As of time of writing it does not contain any generic, but the plan is to sort that in the coming weeks.)
+
+As an example, the standard library's **strings** package provides the following functions to split a `string` into `[]string`:
+
+```Go
+func Split(s, sep string) []string
+func SplitN(s, sep string, n int) []string
+
+func SplitAfter(s, sep string) []string
+func SplitAfterN(s, sep string, n int) []string
+```
+
+**ANGoLS** provides a bunch of additional split functions that provide more expressiveness and/or functionality not possible with the standard library functions, including:
+
+```Go
+func SplitAfterByte(s string, sep byte) []string
+func SplitAfterByteN(s string, sep byte, ix int) []string
+
+func SplitAfterRune(s string, sep rune) []string
+func SplitAfterRuneN(s string, sep rune, ix int) []string
+
+func SplitAfterAny(s, chars string) []string
+func SplitAfterAnyN(s, chars string, ix int) []string
+
+func SplitAfterAnyBytes(s string, seps []byte) []string
+func SplitAfterAnyBytesN(s string, seps []byte, ix int) []string
+
+func SplitAfterAnyRunes(s string, seps []rune) []string
+func SplitAfterAnyRunesN(s string, seps []rune, ix int) []string
+```
 
 
 ## Installation
