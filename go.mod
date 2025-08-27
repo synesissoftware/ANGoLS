@@ -1,10 +1,10 @@
 module github.com/synesissoftware/ANGoLS
 
-go 1.23.6
+go 1.24
 
 require (
-	github.com/stretchr/testify v1.10.0
-	github.com/synesissoftware/STEGoL v0.0.0-20190330001846-560e2a134da1
+	github.com/stretchr/testify v1.11.0
+	github.com/synesissoftware/STEGoL v0.2.2
 	github.com/synesissoftware/ver2go v0.1.2
 )
 

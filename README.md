@@ -63,8 +63,16 @@ func SplitAfterAnyRunesN(s string, seps []rune, ix int) []string
 
 ## Installation
 
+```bash
+go get "github.com/synesissoftware/ANGoLS"
+```
+
+
 ```Go
-import angols "github.com/synesissoftware/ANGoLS"
+import (
+  angols_slices "github.com/synesissoftware/ANGoLS/slices"
+  angols_strings "github.com/synesissoftware/ANGoLS/strings"
+)
 ```
 
 

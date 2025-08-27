@@ -1,5 +1,13 @@
 # **ANGoLS** Changes
 
+## 0.7.0 (beta 1) - 27th August 2025
+
+* moved private elements into **internal** (so as to hide properly);
+* dependencies;
+* GitHub Actions enhancements;
+* boilerplate;
+
+
 ## 0.7.0 (alpha 1) - 20th August 2025
 
 * added `SplitAfterByte()`, `SplitAfterByteN()` ,`SplitAfterRune()` ,`SplitAfterRuneN()`, `SplitAfterAny()`, `SplitAfterAnyN()`, `SplitAfterAnyBytes()`, `SplitAfterAnyBytesN()`, `SplitAfterAnyRunes()`, `SplitAfterAnyRunesN()`;
