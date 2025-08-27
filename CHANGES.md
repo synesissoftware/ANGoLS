@@ -7,6 +7,11 @@
 * added generic function `func SelectSliceOfUInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool`;
 
 
+## 0.7.0 - 27th August 2025
+
+* 0.7.0
+
+
 ## 0.7.0 (beta 1) - 27th August 2025
 
 * moved private elements into **internal** (so as to hide properly);
