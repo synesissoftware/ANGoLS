@@ -4,13 +4,13 @@
 
 /*
  * Created: 24th February 2025
- * Updated: 20th August 2025
+ * Updated: 27th August 2025
  */
 
 package strings
 
 import (
-	"github.com/synesissoftware/ANGoLS/_std_strings"
+	"github.com/synesissoftware/ANGoLS/internal/_std_strings"
 )
 
 /*

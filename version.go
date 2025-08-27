@@ -4,7 +4,7 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 20th August 2025
+ * Updated: 27th August 2025
  */
 
 package angols
@@ -15,7 +15,7 @@ const (
 	VersionMajor uint16 = 0
 	VersionMinor uint16 = 7
 	VersionPatch uint16 = 0
-	VersionAB    uint16 = 0x4001
+	VersionAB    uint16 = 0x8001
 	Version      uint64 = (uint64(VersionMajor) << 48) + (uint64(VersionMinor) << 32) + (uint64(VersionPatch) << 16) + (uint64(VersionAB) << 0)
 )
 
