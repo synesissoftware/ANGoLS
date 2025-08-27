@@ -1,5 +1,10 @@
 # **ANGoLS** Changes
 
+## 0.7.0 - 27th August 2025
+
+* 0.7.0
+
+
 ## 0.7.0 (beta 1) - 27th August 2025
 
 * moved private elements into **internal** (so as to hide properly);
