@@ -1,5 +1,12 @@
 # **ANGoLS** Changes
 
+## 0.8.0 (alpha 1) - 27th August 2025
+
+* added generic function `func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N)`;
+* added generic function `func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool`;
+* added generic function `func SelectSliceOfUInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool`;
+
+
 ## 0.7.0 (beta 1) - 27th August 2025
 
 * moved private elements into **internal** (so as to hide properly);

@@ -4,7 +4,7 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 24th February 2025
+ * Updated: 27th August 2025
  */
 
 package slices
@@ -56,6 +56,21 @@ func CollectSlice(input_slice any, fn func(input_item any) (any, error)) (any, e
 func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_slice []int) {
 
 	result_slice = make([]int, len(input_slice))
+
+	for i, v := range input_slice {
+
+		result := fn(v)
+
+		result_slice[i] = result
+	}
+
+	return
+}
+
+// CollectSliceOfInteger
+func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N) {
+
+	result_slice = make([]N, len(input_slice))
 
 	for i, v := range input_slice {
 
