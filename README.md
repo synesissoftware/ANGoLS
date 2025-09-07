@@ -88,6 +88,8 @@ func CollectSlice(input_slice any, fn func(input_item any) (any, error)) (any, e
 
 func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_slice []int)
 
+func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N)
+
 func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) float64) (result_slice []float64)
 
 func CollectSliceOfString(input_slice []string, fn func(input_item string) string) (result_slice []string)
@@ -99,6 +101,8 @@ func CollectSliceOfString(input_slice []string, fn func(input_item string) strin
 func EqualSliceOfInt(lhs, rhs []int) bool
 
 func EqualSliceOfUInt(lhs, rhs []uint) bool
+
+func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool
 
 func EqualSliceOfFloat64(lhs, rhs []float64) bool
 
@@ -129,6 +133,8 @@ func GenerateSliceOfString(size int, generator func(index int) (result string, e
 func SelectSliceOfInt(input_slice []int, selector func(index int, input_item int) (bool, error)) ([]int, error)
 
 func SelectSliceOfUInt(input_slice []uint, selector func(index int, input_item uint) (bool, error)) ([]uint, error)
+
+func SelectSliceOfUInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error)
 
 func SelectSliceOfString(input_slice []string, selector func(index int, input_item string) (bool, error)) ([]string, error)
 ```

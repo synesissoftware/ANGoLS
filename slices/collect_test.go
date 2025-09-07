@@ -86,6 +86,55 @@ func Test_CollectSliceOfInt_1(t *testing.T) {
 	}
 }
 
+func Test_CollectSliceOfInteger_WITH_int(t *testing.T) {
+
+	fn := func(input int) int {
+
+		if input < 0 {
+
+			return -input
+		}
+
+		return input
+	}
+
+	input_slice := []int{-1, 0, -2, 3}
+	expected := []int{1, 0, 2, 3}
+	actual := slices.CollectSliceOfInteger(input_slice, fn)
+
+	if !slices.EqualSliceOfInt(expected, actual) {
+
+		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
+	}
+
+	if !slices.EqualSlice(expected, actual) {
+
+		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
+	}
+}
+
+func Test_CollectSliceOfInteger_WITH_uint(t *testing.T) {
+
+	fn := func(input uint) uint {
+
+		return input * 2
+	}
+
+	input_slice := []uint{1, 0, 2, 3}
+	expected := []uint{2, 0, 4, 6}
+	actual := slices.CollectSliceOfInteger(input_slice, fn)
+
+	if !slices.EqualSliceOfUInt(expected, actual) {
+
+		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
+	}
+
+	if !slices.EqualSlice(expected, actual) {
+
+		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
+	}
+}
+
 func Test_CollectSliceOfFloat64_1(t *testing.T) {
 
 	fn := func(input float64) float64 {

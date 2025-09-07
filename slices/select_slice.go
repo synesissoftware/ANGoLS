@@ -60,6 +60,30 @@ func SelectSliceOfUInt(input_slice []uint, selector func(index int, input_item u
 	return result[0:result_len], nil
 }
 
+func SelectSliceOfUInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error) {
+
+	input_len := len(input_slice)
+	result := make([]N, input_len)
+	result_len := 0
+
+	for i, v := range input_slice {
+
+		selected, err := selector(i, v)
+		if err != nil {
+
+			return nil, err
+		}
+
+		if selected {
+
+			result[result_len] = v
+			result_len++
+		}
+	}
+
+	return result[0:result_len], nil
+}
+
 func SelectSliceOfString(input_slice []string, selector func(index int, input_item string) (bool, error)) ([]string, error) {
 
 	input_len := len(input_slice)

@@ -4,7 +4,7 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 24th February 2025
+ * Updated: 27th August 2025
  */
 
 package slices
@@ -39,6 +39,28 @@ func EqualSliceOfInt(lhs, rhs []int) bool {
 }
 
 func EqualSliceOfUInt(lhs, rhs []uint) bool {
+
+	len_l := len(lhs)
+	len_r := len(rhs)
+
+	if len_l != len_r {
+
+		return false
+	} else {
+
+		for i := 0; len_l != i; i++ {
+
+			if lhs[i] != rhs[i] {
+
+				return false
+			}
+		}
+
+		return true
+	}
+}
+
+func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool {
 
 	len_l := len(lhs)
 	len_r := len(rhs)
