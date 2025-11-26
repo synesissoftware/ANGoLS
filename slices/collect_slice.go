@@ -114,14 +114,14 @@ func CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) 
 
 	result_slice := make([]string, len(input_slice))
 
-	for i, s := range input_slice {
+	for i, t := range input_slice {
 
-		a, err := fn(&s)
+		s, err := fn(&t)
 		if err != nil {
 			return []string{}, err
 		}
 
-		result_slice[i] = a
+		result_slice[i] = s
 	}
 
 	return result_slice, nil
