@@ -93,6 +93,8 @@ func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16
 func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) float64) (result_slice []float64)
 
 func CollectSliceOfString(input_slice []string, fn func(input_item string) string) (result_slice []string)
+
+func CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error)
 ```
 
 ```Go
