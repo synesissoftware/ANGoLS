@@ -4,7 +4,7 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 24th February 2025
+ * Updated: 27th November 2025
  */
 
 package slices
@@ -16,8 +16,8 @@ import (
 var SkipOneElement = errors.New("Skip one element")
 var SkipRemainingElements = errors.New("Skip remaining elements")
 
-// GenerateSliceOfInt() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
+// Creates a slice of a given size and populates its values with the given
+// generator (which may be nil).
 func GenerateSliceOfInt(size int, generator func(index int) (result int, err error)) (result []int, err error) {
 
 	result = make([]int, size)
@@ -49,8 +49,8 @@ func GenerateSliceOfInt(size int, generator func(index int) (result int, err err
 	return
 }
 
-// GenerateSliceOfUInt() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
+// Creates a slice of a given size and populates its values with the given
+// generator (which may be nil).
 func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err error)) (result []uint, err error) {
 
 	result = make([]uint, size)
@@ -82,8 +82,8 @@ func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err e
 	return
 }
 
-// GenerateSliceOfString() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
+// Creates a slice of a given size and populates its values with the given
+// generator (which may be nil).
 func GenerateSliceOfString(size int, generator func(index int) (result string, err error)) (result []string, err error) {
 
 	result = make([]string, size)

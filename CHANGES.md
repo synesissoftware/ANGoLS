@@ -1,5 +1,11 @@
 # **ANGoLS** Changes
 
+## 0.9.0 (beta 1) - 27th November 2025
+
+* added `CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error)`;
+* changed return type of `CollectSlice()` from `(any, error)` to `([]any, error)`;
+
+
 ## 0.8.0 (alpha 1) - 27th August 2025
 
 * added generic function `func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N)`;

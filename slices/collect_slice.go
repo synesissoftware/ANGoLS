@@ -4,7 +4,7 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 27th August 2025
+ * Updated: 27th November 2025
  */
 
 package slices
@@ -17,9 +17,9 @@ import (
 // /////////////////////////////////////////////////////////////////////////
 // Collect*
 
-// This function maps an input slice of arbitrary type to an output slice
-// of type []any
-func CollectSlice(input_slice any, fn func(input_item any) (any, error)) (any, error) {
+// This function maps an input slice of arbitrary type to an output slice of
+// type []any.
+func CollectSlice(input_slice any, fn func(input_item any) (any, error)) ([]any, error) {
 
 	sl_t := reflect.TypeOf(input_slice)
 
@@ -52,7 +52,7 @@ func CollectSlice(input_slice any, fn func(input_item any) (any, error)) (any, e
 	return result, nil
 }
 
-// CollectSliceOfInt
+// This function maps an input slice of []int to an output slice of []int.
 func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_slice []int) {
 
 	result_slice = make([]int, len(input_slice))
@@ -82,7 +82,8 @@ func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16
 	return
 }
 
-// CollectSliceOfFloat64
+// This function maps an input slice of []float64 to an output slice of
+// []float64.
 func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) float64) (result_slice []float64) {
 
 	result_slice = make([]float64, len(input_slice))
@@ -97,7 +98,8 @@ func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) fl
 	return
 }
 
-// CollectSliceOfString
+// This function maps an input slice of []string to an output slice of
+// []string.
 func CollectSliceOfString(input_slice []string, fn func(input_item string) string) (result_slice []string) {
 
 	result_slice = make([]string, len(input_slice))
@@ -110,6 +112,7 @@ func CollectSliceOfString(input_slice []string, fn func(input_item string) strin
 	return
 }
 
+// This function maps an input slice of []T to an output slice of []string.
 func CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error) {
 
 	result_slice := make([]string, len(input_slice))

@@ -4,7 +4,7 @@
 
 /*
  * Created: 20th August 2025
- * Updated: 20th August 2025
+ * Updated: 27th November 2025
  */
 
 package strings
@@ -15,8 +15,8 @@ import (
 	"unicode/utf8"
 )
 
-// SplitAfterByte slices a string into all substings after each instance of
-// the byte sep and returns a slice of those substrings.
+// Slices a string into all substings after each instance of the byte sep
+// and returns a slice of those substrings.
 //
 // If s does not contain sep, SplitAfterByte returns a slice of length 1
 // whose only element is s.
@@ -44,8 +44,8 @@ func SplitAfterByte(s string, sep byte) []string {
 	return r
 }
 
-// SplitAfterByteN slices s into substrings after each instance of the byte
-// sep and returns a slice of those substrings.
+// Slices s into substrings after each instance of the byte sep and returns
+// a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -92,8 +92,8 @@ func SplitAfterByteN(s string, sep byte, ix int) []string {
 	}
 }
 
-// SplitAfterRune slices a string into all substings after each instance of
-// the rune sep and returns a slice of those substrings.
+// Slices a string into all substings after each instance of the rune sep
+// and returns a slice of those substrings.
 //
 // If s does not contain sep, SplitAfterRune returns a slice of length 1
 // whose only element is s.
@@ -125,8 +125,8 @@ func SplitAfterRune(s string, sep rune) []string {
 	return r
 }
 
-// SplitAfterRuneN slices s into substrings after each instance of the rune
-// sep and returns a slice of those substrings.
+// Slices s into substrings after each instance of the rune sep and returns
+// a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -177,8 +177,8 @@ func SplitAfterRuneN(s string, sep rune, ix int) []string {
 	}
 }
 
-// SplitAfterAny slices a string into all substings after each instance of
-// any of the runes in chars and returns a slice of those substrings.
+// Slices a string into all substings after each instance of any of the
+// runes in chars and returns a slice of those substrings.
 //
 // If s does not contain any of the runes in chars and chars is not empty,
 // SplitAfterAny returns a slice of length 1 whose only element is s.
@@ -210,8 +210,8 @@ func SplitAfterAny(s, chars string) []string {
 	return r
 }
 
-// SplitAfterAnyN slices s into substrings after each instance of any of the
-// runes in chars and returns a slice of those substrings.
+// Slices s into substrings after each instance of any of the runes in chars
+// and returns a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -262,9 +262,8 @@ func SplitAfterAnyN(s, chars string, ix int) []string {
 	}
 }
 
-// SplitAfterAnyBytes slices a string into all substings after each
-// instance of any of the bytes in seps and returns a slice of those
-// substrings.
+// Slices a string into all substings after each instance of any of the
+// bytes in seps and returns a slice of those substrings.
 //
 // If s does not contain any of the bytes in seps and seps is not empty,
 // SplitAfterAnyBytes returns a slice of length 1 whose only element is s.
@@ -292,9 +291,8 @@ func SplitAfterAnyBytes(s string, seps []byte) []string {
 	return r
 }
 
-// SplitAfterAnyBytesN slices a string into all substings after each
-// instance of any of the bytes in seps and returns a slice of those
-// substrings.
+// Slices a string into all substings after each instance of any of the
+// bytes in seps and returns a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -340,9 +338,8 @@ func SplitAfterAnyBytesN(s string, seps []byte, ix int) []string {
 	}
 }
 
-// SplitAfterAnyRunes slices a string into all substings after each
-// instance of any of the runes in seps and returns a slice of those
-// substrings.
+// Slices a string into all substings after each instance of any of the
+// runes in seps and returns a slice of those substrings.
 //
 // If s does not contain any of the runes in seps and seps is not empty,
 // SplitAfterAnyRunes returns a slice of length 1 whose only element is s.
@@ -374,9 +371,8 @@ func SplitAfterAnyRunes(s string, seps []rune) []string {
 	return r
 }
 
-// SplitAfterAnyRunesN slices a string into all substings after each
-// instance of any of the runes in seps and returns a slice of those
-// substrings.
+// Slices a string into all substings after each instance of any of the
+// runes in seps and returns a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit

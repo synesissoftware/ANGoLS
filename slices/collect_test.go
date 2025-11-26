@@ -40,22 +40,16 @@ func Test_Collect_Array_1_ints_to_ints(t *testing.T) {
 		t.Errorf("Collect() failed: %v", err)
 	} else {
 
-		if si, ok := r.([]any); !ok {
+		for ix, v := range r {
 
-			t.Errorf("Collect() failed: result is not of type []any\n")
-		} else {
+			if i, ok := v.(int); !ok {
 
-			for ix, v := range si {
+				t.Errorf("Element (%T)%v of non-int type at index %d\n", v, v, ix)
+			} else {
 
-				if i, ok := v.(int); !ok {
+				if ints[ix] != i {
 
-					t.Errorf("Element (%T)%v of non-int type at index %d\n", v, v, ix)
-				} else {
-
-					if ints[ix] != i {
-
-						t.Errorf("Element (%T)%v at index %d is different from expected value %d\n", v, v, ix, ints[ix])
-					}
+					t.Errorf("Element (%T)%v at index %d is different from expected value %d\n", v, v, ix, ints[ix])
 				}
 			}
 		}
