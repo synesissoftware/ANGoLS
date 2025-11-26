@@ -1,8 +1,11 @@
 package slices_test
 
 import (
+	"fmt"
+
 	"github.com/synesissoftware/ANGoLS/slices"
 
+	"strconv"
 	"strings"
 	"testing"
 )
@@ -214,5 +217,100 @@ func Benchmark_equal_uints_by_EqualSlice(b *testing.B) {
 	for i := 0; i != int_equal_iterations; i++ {
 
 		_ = slices.EqualSlice(ints_1, ints_2)
+	}
+}
+
+func Test_CollectSliceIntoStringSlice(t *testing.T) {
+
+	type Nickname string
+
+	nicknames := []Nickname{
+		"Goose",
+		"Ice Man",
+		"Maverick",
+	}
+
+	result, err := slices.CollectSliceIntoStringSlice[Nickname](nicknames, func(input_item *Nickname) (string, error) {
+		return string(*input_item), nil
+	})
+
+	if err != nil {
+		t.Errorf("CollectSliceIntoStringSlice() returned error: %v", err)
+	}
+
+	expected := []string{"Goose", "Ice Man", "Maverick"}
+
+	if !slices.EqualSliceOfString(result, expected) {
+		t.Errorf("actual value '%v' does not equal expected value '%v'", result, expected)
+	}
+}
+
+func Test_CollectSliceIntoStringSlice_with_CaseTesting(t *testing.T) {
+
+	type Nickname string
+
+	nicknames := []Nickname{
+		"Goose",
+		"Ice Man",
+		"Maverick",
+	}
+
+	result, err := slices.CollectSliceIntoStringSlice[Nickname](nicknames, func(input_item *Nickname) (string, error) {
+		return strings.ToUpper(string(*input_item)), nil
+	})
+
+	if err != nil {
+		t.Errorf("CollectSliceIntoStringSlice() returned error: %v", err)
+	}
+
+	expected := []string{"GOOSE", "ICE MAN", "MAVERICK"}
+
+	if !slices.EqualSliceOfString(result, expected) {
+		t.Errorf("actual value '%v' does not equal expected value '%v'", result, expected)
+	}
+}
+
+func Test_CollectSliceIntoStringSlice_with_Ints(t *testing.T) {
+
+	values := []int{
+		1,
+		2,
+		3,
+	}
+
+	result, err := slices.CollectSliceIntoStringSlice[int](values, func(input_item *int) (string, error) {
+		return strconv.Itoa(*input_item), nil
+	})
+
+	if err != nil {
+		t.Errorf("CollectSliceIntoStringSlice() returned error: %v", err)
+	}
+
+	expected := []string{"1", "2", "3"}
+
+	if !slices.EqualSliceOfString(result, expected) {
+		t.Errorf("actual value '%v' does not equal expected value '%v'", result, expected)
+	}
+}
+
+func Test_CollectSliceIntoStringSlice_with_Fail(t *testing.T) {
+
+	type Nickname string
+
+	nicknames := []Nickname{
+		"Goose",
+		"Ice Man",
+		"Maverick",
+	}
+
+	_, err := slices.CollectSliceIntoStringSlice[Nickname](nicknames, func(input_item *Nickname) (string, error) {
+		if strings.Contains(string(*input_item), "k") {
+			return "", fmt.Errorf("invalid nickname: %s", *input_item)
+		}
+		return string(*input_item), nil
+	})
+
+	if err == nil {
+		t.Errorf("CollectSliceIntoStringSlice() should've failed")
 	}
 }

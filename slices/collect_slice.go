@@ -110,4 +110,21 @@ func CollectSliceOfString(input_slice []string, fn func(input_item string) strin
 	return
 }
 
+func CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error) {
+
+	result_slice := make([]string, len(input_slice))
+
+	for i, t := range input_slice {
+
+		s, err := fn(&t)
+		if err != nil {
+			return []string{}, err
+		}
+
+		result_slice[i] = s
+	}
+
+	return result_slice, nil
+}
+
 /* ///////////////////////////// end of file //////////////////////////// */
