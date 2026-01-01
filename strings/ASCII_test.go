@@ -5,7 +5,6 @@
 package strings
 
 import (
-	//strings "github.com/synesissoftware/ANGoLS/strings"
 	stegol "github.com/synesissoftware/STEGoL"
 
 	stdstrings "strings"
