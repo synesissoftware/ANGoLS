@@ -4,14 +4,14 @@
 
 /*
  * Created: 30th March 2019
- * Updated: 24th February 2025
+ * Updated: 27th November 2025
  */
 
 package strings
 
-// StringChomp() takes a single string and returns a chomped version of it,
-// where chomping removes a single trailing '\n' character, a single
-// trailing '\r' character, or a single trailing sequence of "\r\n"
+// Takes a single string and returns a chomped version of it, where chomping
+// removes a single trailing '\n' character, a single trailing '\r'
+// character, or a single trailing sequence of "\r\n".
 func StringChomp(s string) string {
 
 	switch l := len(s); l {
@@ -41,9 +41,9 @@ func StringChomp(s string) string {
 	return s
 }
 
-// StringChompAll() takes a single string and returns a fully/repeatedly
-// chomped version of, where full/repeated chomping removes all trailing
-// '\r' and/or '\n' characters
+// Takes a single string and returns a fully/repeatedly chomped version of,
+// where full/repeated chomping removes all trailing '\r' and/or '\n'
+// characters.
 func StringChompAll(s string) string {
 
 out:
