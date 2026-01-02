@@ -147,6 +147,24 @@ func SelectSliceOfString(input_slice []string, selector func(index int, input_it
 ```Go
 // in "github.com/synesissoftware/ANGoLS/strings"
 
+// Returns a copy of s with all uppercase ASCII letters converted to their
+// lowercase equivalents. Non-ASCII bytes and non-uppercase letters are left
+// unchanged.
+//
+// The prime use-case for this function is when dealing with strings that
+// are known to contain only ASCII and a faster conversion than is provided
+// by the standard `ToLower()` is desired.
+func ASCIIToLower(s string) string
+
+// Returns a copy of s with all lowercase ASCII letters converted to their
+// uppercase equivalents. Non-ASCII bytes and non-lowercase letters are left
+// unchanged.
+//
+// The prime use-case for this function is when dealing with strings that
+// are known to contain only ASCII and a faster conversion than is provided
+// by the standard `ToUpper()` is desired.
+func ASCIIToUpper(s string) string
+
 // Finds the index of the given substring in the given string, starting from
 // the position after the given index. -1 is returned if the find is not
 // successful.

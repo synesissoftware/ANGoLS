@@ -1,5 +1,10 @@
 # **ANGoLS** Changes
 
+## 0.9.0 (beta 2) - 2nd January 2026
+
+* added `ASCIIToULower()` and `ASCIIToUpper()`;
+
+
 ## 0.9.0 (beta 1) - 27th November 2025
 
 * added `CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error)`;
