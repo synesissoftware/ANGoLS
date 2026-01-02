@@ -1,5 +1,10 @@
 # **ANGoLS** Changes
 
+## 0.9.0 - 3rd January 2026
+
+* 0.9.0
+
+
 ## 0.9.0 (beta 2) - 2nd January 2026
 
 * added `ASCIIToULower()` and `ASCIIToUpper()`;
