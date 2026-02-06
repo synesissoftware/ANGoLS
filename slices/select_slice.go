@@ -60,7 +60,7 @@ func SelectSliceOfUint(input_slice []uint, selector func(index int, input_item u
 	return result[0:result_len], nil
 }
 
-func SelectSliceOfUinteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error) {
+func SelectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error) {
 
 	input_len := len(input_slice)
 	result := make([]N, input_len)
