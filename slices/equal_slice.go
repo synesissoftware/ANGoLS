@@ -60,7 +60,7 @@ func EqualSliceOfUInt(lhs, rhs []uint) bool {
 	}
 }
 
-func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool {
+func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []N) bool {
 
 	len_l := len(lhs)
 	len_r := len(rhs)
