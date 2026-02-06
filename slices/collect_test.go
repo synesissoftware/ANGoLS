@@ -120,7 +120,7 @@ func Test_CollectSliceOfInteger_WITH_uint(t *testing.T) {
 	expected := []uint{2, 0, 4, 6}
 	actual := slices.CollectSliceOfInteger(input_slice, fn)
 
-	if !slices.EqualSliceOfUInt(expected, actual) {
+	if !slices.EqualSliceOfUint(expected, actual) {
 
 		t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 	}
@@ -204,8 +204,8 @@ func Benchmark_equal_ints_by_EqualSlice(b *testing.B) {
 func Benchmark_equal_uints_by_EqualSlice(b *testing.B) {
 
 	fn := func(index int) (uint, error) { return uint(index), nil }
-	ints_1, _ := slices.GenerateSliceOfUInt(int_equal_size, fn)
-	ints_2, _ := slices.GenerateSliceOfUInt(int_equal_size, fn)
+	ints_1, _ := slices.GenerateSliceOfUint(int_equal_size, fn)
+	ints_2, _ := slices.GenerateSliceOfUint(int_equal_size, fn)
 
 	for i := 0; i != int_equal_iterations; i++ {
 

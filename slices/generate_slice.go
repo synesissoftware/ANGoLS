@@ -1,10 +1,10 @@
-// Copyright 2019-2025 Matthew Wilson and Synesis Information Systems. All
+// Copyright 2019-2026 Matthew Wilson and Synesis Information Systems. All
 // rights reserved. Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
 /*
  * Created: 1st March 2019
- * Updated: 27th November 2025
+ * Updated: 7th February 2026
  */
 
 package slices
@@ -51,7 +51,7 @@ func GenerateSliceOfInt(size int, generator func(index int) (result int, err err
 
 // Creates a slice of a given size and populates its values with the given
 // generator (which may be nil).
-func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err error)) (result []uint, err error) {
+func GenerateSliceOfUint(size int, generator func(index int) (result uint, err error)) (result []uint, err error) {
 
 	result = make([]uint, size)
 

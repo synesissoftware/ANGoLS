@@ -102,7 +102,7 @@ func CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) 
 
 func EqualSliceOfInt(lhs, rhs []int) bool
 
-func EqualSliceOfUInt(lhs, rhs []uint) bool
+func EqualSliceOfUint(lhs, rhs []uint) bool
 
 func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool
 
@@ -120,9 +120,9 @@ func EqualSlice(lhs, rhs any) bool
 // values with the given generator (which may be nil)
 func GenerateSliceOfInt(size int, generator func(index int) (result int, err error)) (result []int, err error)
 
-// GenerateSliceOfUInt() creates a slice of a given size and populates its
+// GenerateSliceOfUint() creates a slice of a given size and populates its
 // values with the given generator (which may be nil)
-func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err error)) (result []uint, err error)
+func GenerateSliceOfUint(size int, generator func(index int) (result uint, err error)) (result []uint, err error)
 
 // GenerateSliceOfString() creates a slice of a given size and populates its
 // values with the given generator (which may be nil)
@@ -134,9 +134,9 @@ func GenerateSliceOfString(size int, generator func(index int) (result string, e
 
 func SelectSliceOfInt(input_slice []int, selector func(index int, input_item int) (bool, error)) ([]int, error)
 
-func SelectSliceOfUInt(input_slice []uint, selector func(index int, input_item uint) (bool, error)) ([]uint, error)
+func SelectSliceOfUint(input_slice []uint, selector func(index int, input_item uint) (bool, error)) ([]uint, error)
 
-func SelectSliceOfUInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error)
+func SelectSliceOfUinteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error)
 
 func SelectSliceOfString(input_slice []string, selector func(index int, input_item string) (bool, error)) ([]string, error)
 ```

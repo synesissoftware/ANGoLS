@@ -74,13 +74,13 @@ func Test_SelectSliceOfInt(t *testing.T) {
 	}
 }
 
-func Test_SelectSliceOfUInt(t *testing.T) {
+func Test_SelectSliceOfUint(t *testing.T) {
 
 	{
 		input := []uint{}
 
 		{
-			r, _ := slices.SelectSliceOfUInt(
+			r, _ := slices.SelectSliceOfUint(
 				input,
 				func(_ int, _ uint) (bool, error) { return true, nil },
 			)
@@ -88,7 +88,7 @@ func Test_SelectSliceOfUInt(t *testing.T) {
 			assert.Equal(t, []uint{}, r)
 		}
 		{
-			r, _ := slices.SelectSliceOfUInt(
+			r, _ := slices.SelectSliceOfUint(
 				input,
 				func(_ int, _ uint) (bool, error) { return false, nil },
 			)
@@ -101,7 +101,7 @@ func Test_SelectSliceOfUInt(t *testing.T) {
 		input := []uint{1}
 
 		{
-			r, _ := slices.SelectSliceOfUInt(
+			r, _ := slices.SelectSliceOfUint(
 				input,
 				func(_ int, _ uint) (bool, error) { return true, nil },
 			)
@@ -109,7 +109,7 @@ func Test_SelectSliceOfUInt(t *testing.T) {
 			assert.Equal(t, []uint{1}, r)
 		}
 		{
-			r, _ := slices.SelectSliceOfUInt(
+			r, _ := slices.SelectSliceOfUint(
 				input,
 				func(_ int, _ uint) (bool, error) { return false, nil },
 			)
@@ -122,7 +122,7 @@ func Test_SelectSliceOfUInt(t *testing.T) {
 		input := []uint{1, 2, 3, 4, 5, 6}
 
 		{
-			r, _ := slices.SelectSliceOfUInt(
+			r, _ := slices.SelectSliceOfUint(
 				input,
 				func(_ int, input_item uint) (bool, error) { return 0 != (input_item % 2), nil },
 			)
@@ -130,7 +130,7 @@ func Test_SelectSliceOfUInt(t *testing.T) {
 			assert.Equal(t, []uint{1, 3, 5}, r)
 		}
 		{
-			r, _ := slices.SelectSliceOfUInt(
+			r, _ := slices.SelectSliceOfUint(
 				input,
 				func(_ int, input_item uint) (bool, error) { return 0 == (input_item % 2), nil },
 			)
@@ -148,7 +148,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 			input := []int{}
 
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, _ int) (bool, error) { return true, nil },
 				)
@@ -156,7 +156,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 				assert.Equal(t, []int{}, r)
 			}
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, _ int) (bool, error) { return false, nil },
 				)
@@ -169,7 +169,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 			input := []int{1}
 
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, _ int) (bool, error) { return true, nil },
 				)
@@ -177,7 +177,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 				assert.Equal(t, []int{1}, r)
 			}
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, _ int) (bool, error) { return false, nil },
 				)
@@ -190,7 +190,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 			input := []int{1, 2, 3, 4, 5, 6}
 
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, input_item int) (bool, error) { return 0 != (input_item % 2), nil },
 				)
@@ -198,7 +198,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 				assert.Equal(t, []int{1, 3, 5}, r)
 			}
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, input_item int) (bool, error) { return 0 == (input_item % 2), nil },
 				)
@@ -214,7 +214,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 			input := []int{}
 
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, _ int) (bool, error) { return true, nil },
 				)
@@ -222,7 +222,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 				assert.Equal(t, []int{}, r)
 			}
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, _ int) (bool, error) { return false, nil },
 				)
@@ -235,7 +235,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 			input := []int{1}
 
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, _ int) (bool, error) { return true, nil },
 				)
@@ -243,7 +243,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 				assert.Equal(t, []int{1}, r)
 			}
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, _ int) (bool, error) { return false, nil },
 				)
@@ -256,7 +256,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 			input := []int{1, 2, 3, 4, 5, 6}
 
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, input_item int) (bool, error) { return 0 != (input_item % 2), nil },
 				)
@@ -264,7 +264,7 @@ func Test_SelectSliceOfInteger(t *testing.T) {
 				assert.Equal(t, []int{1, 3, 5}, r)
 			}
 			{
-				r, _ := slices.SelectSliceOfUInteger(
+				r, _ := slices.SelectSliceOfUinteger(
 					input,
 					func(_, input_item int) (bool, error) { return 0 == (input_item % 2), nil },
 				)

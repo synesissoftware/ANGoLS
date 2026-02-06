@@ -1,10 +1,10 @@
-// Copyright 2019-2025 Matthew Wilson and Synesis Information Systems. All
+// Copyright 2019-2026 Matthew Wilson and Synesis Information Systems. All
 // rights reserved. Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
 /*
  * Created: 1st March 2019
- * Updated: 27th August 2025
+ * Updated: 7th February 2026
  */
 
 package slices
@@ -38,7 +38,7 @@ func EqualSliceOfInt(lhs, rhs []int) bool {
 	}
 }
 
-func EqualSliceOfUInt(lhs, rhs []uint) bool {
+func EqualSliceOfUint(lhs, rhs []uint) bool {
 
 	len_l := len(lhs)
 	len_r := len(rhs)
