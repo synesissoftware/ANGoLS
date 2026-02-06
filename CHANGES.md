@@ -1,5 +1,11 @@
 # **ANGoLS** Changes
 
+## 0.9.1 - 7th February 2026
+
+* fixed `EqualSliceOfInteger[]()` return type;
+* added unit-tests for equal and select;
+
+
 ## 0.9.0 - 3rd January 2026
 
 * 0.9.0
