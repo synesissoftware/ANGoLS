@@ -2,6 +2,7 @@ package strings_test
 
 import (
 	strings "github.com/synesissoftware/ANGoLS/strings"
+
 	stegol "github.com/synesissoftware/STEGoL"
 
 	"testing"

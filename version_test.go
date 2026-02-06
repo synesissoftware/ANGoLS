@@ -1,8 +1,9 @@
 package angols_test
 
 import (
-	"github.com/stretchr/testify/require"
 	angols "github.com/synesissoftware/ANGoLS"
+
+	"github.com/stretchr/testify/require"
 
 	"testing"
 )

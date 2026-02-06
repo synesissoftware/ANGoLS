@@ -4,7 +4,7 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 27th November 2025
+ * Updated: 6th February 2026
  */
 
 package slices
@@ -67,7 +67,8 @@ func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_s
 	return
 }
 
-// CollectSliceOfInteger
+// This function maps an input slice of []N an output slice of []N, where N
+// is an integer type.
 func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N) {
 
 	result_slice = make([]N, len(input_slice))
