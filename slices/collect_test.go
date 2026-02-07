@@ -3,6 +3,8 @@ package slices_test
 import (
 	"github.com/synesissoftware/ANGoLS/slices"
 
+	"github.com/stretchr/testify/assert"
+
 	"fmt"
 	"strconv"
 	"strings"
@@ -17,40 +19,25 @@ const (
 
 func Test_Collect_Array_1_ints_to_ints(t *testing.T) {
 
-	fn := func(input any) (any, error) {
+	collector := func(index int, input_item *int) (int, error) {
 
-		if i, ok := input.(int); ok {
+		if *input_item < 0 {
 
-			if i < 0 {
-
-				return -i, nil
-			}
+			return -*input_item, nil
 		}
 
-		return input, nil
+		return *input_item, nil
 	}
 
 	ints := []int{1, 2, 3}
 
-	r, err := slices.CollectSlice(ints, fn)
+	r, err := slices.CollectSlice(ints, collector)
 	if err != nil {
 
 		t.Errorf("Collect() failed: %v", err)
 	} else {
 
-		for ix, v := range r {
-
-			if i, ok := v.(int); !ok {
-
-				t.Errorf("Element (%T)%v of non-int type at index %d\n", v, v, ix)
-			} else {
-
-				if ints[ix] != i {
-
-					t.Errorf("Element (%T)%v at index %d is different from expected value %d\n", v, v, ix, ints[ix])
-				}
-			}
-		}
+		assert.Equal(t, ints, r)
 	}
 }
 

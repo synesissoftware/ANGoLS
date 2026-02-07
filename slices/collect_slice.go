@@ -9,44 +9,22 @@
 
 package slices
 
-import (
-	"fmt"
-	"reflect"
-)
-
 // /////////////////////////////////////////////////////////////////////////
 // Collect*
 
-// This function maps an input slice of arbitrary type to an output slice of
-// type []any.
-func CollectSlice(input_slice any, fn func(input_item any) (any, error)) ([]any, error) {
+// This function maps an input slice of T[] to an output slice of []T.
+func CollectSlice[T any](input_slice []T, collector func(index int, input_item *T) (T, error)) ([]T, error) {
 
-	sl_t := reflect.TypeOf(input_slice)
+	result := make([]T, len(input_slice))
 
-	if reflect.Slice != sl_t.Kind() {
+	for i := 0; i != len(input_slice); i++ {
 
-		msg := fmt.Sprintf("CollectSlice() called with input_slice of type %T; slice required", input_slice)
+		if r, err := collector(i, &input_slice[i]); err != nil {
+			return nil, err
+		} else {
 
-		panic(msg)
-	}
-
-	sl_v := reflect.ValueOf(input_slice)
-	len := sl_v.Len()
-
-	result := make([]any, len)
-
-	for i := 0; len != i; i++ {
-
-		p := sl_v.Index(i)
-		v := p.Interface()
-
-		r, e := fn(v)
-		if e != nil {
-
-			return nil, e
+			result[i] = r
 		}
-
-		result[i] = r
 	}
 
 	return result, nil

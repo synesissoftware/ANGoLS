@@ -96,9 +96,8 @@ Modelled after **Ruby**'s `Enumerable#collect()`, these functions provide for tr
 ```Go
 // in "github.com/synesissoftware/ANGoLS/slices"
 
-// This function maps an input slice of arbitrary type to an output slice of
-// type []any.
-func CollectSlice(input_slice any, fn func(input_item any) (any, error)) ([]any, error)
+// This function maps an input slice of T[] to an output slice of []T.
+func CollectSlice[T any](input_slice []T, collector func(index int, input_item *T) (T, error)) ([]T, error)
 
 // This function maps an input slice of []int to an output slice of []int.
 func CollectSliceOfInt(input_slice []int, collector func(input_item int) int) (result_slice []int)
