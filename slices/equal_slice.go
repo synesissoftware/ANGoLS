@@ -20,50 +20,18 @@ import (
 // order.
 func EqualSliceOfInt(lhs, rhs []int) bool {
 
-	len_l := len(lhs)
-	len_r := len(rhs)
-
-	if len_l != len_r {
-
-		return false
-	} else {
-
-		for i := 0; len_l != i; i++ {
-
-			if lhs[i] != rhs[i] {
-
-				return false
-			}
-		}
-
-		return true
-	}
+	return EqualSliceOfInteger(lhs, rhs)
 }
 
 // Indicates whether two []uint slices have the same size, contents, and
 // order.
 func EqualSliceOfUint(lhs, rhs []uint) bool {
 
-	len_l := len(lhs)
-	len_r := len(rhs)
-
-	if len_l != len_r {
-
-		return false
-	} else {
-
-		for i := 0; len_l != i; i++ {
-
-			if lhs[i] != rhs[i] {
-
-				return false
-			}
-		}
-
-		return true
-	}
+	return EqualSliceOfInteger(lhs, rhs)
 }
 
+// Indicates whether two []N slices have the same size, contents, and
+// order.
 func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []N) bool {
 
 	len_l := len(lhs)
@@ -134,57 +102,83 @@ func EqualSliceOfString(lhs, rhs []string) bool {
 	}
 }
 
-func EqualSlice(lhs, rhs any) bool {
+func EqualSlice[T any](lhs, rhs []T) bool {
 
 	// Check for typed variants
 
-	switch lhs_typed := lhs.(type) {
+	switch lhs_typed := any(lhs).(type) {
 
+	case []int8:
+
+		rhs_typed, _ := any(rhs).([]int8)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []int16:
+
+		rhs_typed, _ := any(rhs).([]int16)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []int32:
+
+		rhs_typed, _ := any(rhs).([]int32)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []int64:
+
+		rhs_typed, _ := any(rhs).([]int64)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
 	case []int:
 
-		if rhs_typed, ok := rhs.([]int); ok {
+		rhs_typed, _ := any(rhs).([]int)
 
-			return EqualSliceOfInt(lhs_typed, rhs_typed)
-		} else {
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []uint8:
 
-			return false
-		}
+		rhs_typed, _ := any(rhs).([]uint8)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []uint16:
+
+		rhs_typed, _ := any(rhs).([]uint16)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []uint32:
+
+		rhs_typed, _ := any(rhs).([]uint32)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []uint64:
+
+		rhs_typed, _ := any(rhs).([]uint64)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []uint:
+
+		rhs_typed, _ := any(rhs).([]uint)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
+	case []uintptr:
+
+		rhs_typed, _ := any(rhs).([]uintptr)
+
+		return EqualSliceOfInteger(lhs_typed, rhs_typed)
 	case []float64:
 
-		if rhs_typed, ok := rhs.([]float64); ok {
+		rhs_typed, _ := any(rhs).([]float64)
 
-			return EqualSliceOfFloat64(lhs_typed, rhs_typed)
-		} else {
-
-			return false
-		}
+		return EqualSliceOfFloat64(lhs_typed, rhs_typed)
 	case []string:
 
-		if rhs_typed, ok := rhs.([]string); ok {
+		rhs_typed, _ := any(rhs).([]string)
 
-			return EqualSliceOfString(lhs_typed, rhs_typed)
-		} else {
-
-			return false
-		}
+		return EqualSliceOfString(lhs_typed, rhs_typed)
 	}
 
 	// Generic comparison
 
 	lhs_t := reflect.TypeOf(lhs)
 	rhs_t := reflect.TypeOf(rhs)
-
-	// check both are slices
-
-	if reflect.Slice != lhs_t.Kind() {
-
-		return false
-	}
-
-	if reflect.Slice != rhs_t.Kind() {
-
-		return false
-	}
 
 	// check element type
 

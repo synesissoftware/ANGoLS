@@ -29,6 +29,7 @@ recls for Go
 ## 0.11+ Items
 
 * simplify names, e.g. `CollectSlice()` => `Collect()`, and so forth;
+* apply `~` on generics;
 * \<none>
 
 

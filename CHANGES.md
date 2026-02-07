@@ -2,6 +2,9 @@
 
 ## 0.10.0-alpha1 - 7th February 2026
 
+* refactored `EqualSliceOfInt()` in terms of `EqualSliceOfInteger[T]()`;
+* refactored `EqualSliceOfUint()` in terms of `EqualSliceOfInteger[T]()`;
+* changed signature of `EqualSlice()`, including making be a generic function (`EqualSlice[T]()`);
 * renamed `SelectSliceOfUinteger()` => `SelectSliceOfInteger()`;
 * simplified implementation of `SelectSliceOfInteger[T]()`;
 * added unit-tests for `SelectSliceOfInt()` and `SelectSliceOfString()`;
