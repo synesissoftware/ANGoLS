@@ -17,10 +17,13 @@ package strings
 // are known to contain only ASCII and a faster conversion than is provided
 // by the standard `ToLower()` is desired.
 func ASCIIToLower(s string) string {
+
 	b := []byte(s)
 
-	for i := 0; i < len(b); i++ {
-		if b[i] >= 'A' && b[i] <= 'Z' {
+	for i, c := range b {
+
+		if c >= 'A' && c <= 'Z' {
+
 			b[i] += 32
 		}
 	}
@@ -36,10 +39,13 @@ func ASCIIToLower(s string) string {
 // are known to contain only ASCII and a faster conversion than is provided
 // by the standard `ToUpper()` is desired.
 func ASCIIToUpper(s string) string {
+
 	b := []byte(s)
 
-	for i := 0; i < len(b); i++ {
-		if b[i] >= 'a' && b[i] <= 'z' {
+	for i, c := range b {
+
+		if c >= 'a' && c <= 'z' {
+
 			b[i] -= 32
 		}
 	}
