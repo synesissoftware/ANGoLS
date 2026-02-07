@@ -7,7 +7,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/synesissoftware/ANGoLS)](https://goreportcard.com/report/github.com/synesissoftware/ANGoLS)
 [![Go Reference](https://pkg.go.dev/badge/github.com/synesissoftware/ANGoLS.svg)](https://pkg.go.dev/github.com/synesissoftware/ANGoLS)
 
-**A**gorithms **N**ot in **Go** **L**anguage **S**tandard library
+**A**lgorithms **N**ot in **Go** **L**anguage **S**tandard library
 
 
 ## Table of Contents <!-- omit in toc -->
@@ -16,7 +16,15 @@
 - [Installation](#installation)
 - [Components](#components)
 	- [Slices](#slices)
+		- [`Collect` Functions](#collect-functions)
+		- [`EqualSlice` Functions](#equalslice-functions)
+		- [`GenerateSlice` Functions](#generateslice-functions)
+		- [`SelectSlice` Functions](#selectslice-functions)
 	- [Strings](#strings)
+		- [Conversion Functions](#conversion-functions)
+		- [`Index` Functions](#index-functions)
+		- [`Split` Functions](#split-functions)
+		- [`Chomp` Functions](#chomp-functions)
 - [Examples](#examples)
 - [Project Information](#project-information)
 	- [Where to get help](#where-to-get-help)
@@ -81,53 +89,88 @@ import (
 
 ### Slices
 
+#### `Collect` Functions
+
+Modelled after **Ruby**'s `Enumerable#collect()`, these functions provide for transforming a slice of a given type with given values into a same-sized slice of a given type with transformed values.
+
 ```Go
 // in "github.com/synesissoftware/ANGoLS/slices"
 
-func CollectSlice(input_slice any, fn func(input_item any) (any, error)) (any, error)
+// This function maps an input slice of arbitrary type to an output slice of
+// type []any.
+func CollectSlice(input_slice any, fn func(input_item any) (any, error)) ([]any, error)
 
+// This function maps an input slice of []int to an output slice of []int.
 func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_slice []int)
 
+// This function maps an input slice of []N to an output slice of []N, where
+// N is any integer type.
 func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N)
 
+// This function maps an input slice of []float64 to an output slice of
+// []float64.
 func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) float64) (result_slice []float64)
 
+// This function maps an input slice of []string to an output slice of
+// []string.
 func CollectSliceOfString(input_slice []string, fn func(input_item string) string) (result_slice []string)
 
+// This function maps an input slice of []T to an output slice of []string.
 func CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error)
 ```
 
+#### `EqualSlice` Functions
+
+Functions for evaluating equality between slices, in terms of both length and contents (values and ordering).
+
 ```Go
 // in "github.com/synesissoftware/ANGoLS/slices"
 
+// Indicates whether two []int slices have the same size, contents, and
+// order.
 func EqualSliceOfInt(lhs, rhs []int) bool
 
+// Indicates whether two []uint slices have the same size, contents, and
+// order.
 func EqualSliceOfUint(lhs, rhs []uint) bool
 
 func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool
 
+// Indicates whether two []float64 slices have the same size, contents, and
+// order.
 func EqualSliceOfFloat64(lhs, rhs []float64) bool
 
+// Indicates whether two []string slices have the same size, contents, and
+// order.
 func EqualSliceOfString(lhs, rhs []string) bool
 
 func EqualSlice(lhs, rhs any) bool
 ```
 
+#### `GenerateSlice` Functions
+
+Functions for generating slices of a given size and type from a generator function.
+
 ```Go
 // in "github.com/synesissoftware/ANGoLS/slices"
 
-// GenerateSliceOfInt() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
+// Creates a slice of a given size and populates its values with the given
+// generator (which may be nil).
 func GenerateSliceOfInt(size int, generator func(index int) (result int, err error)) (result []int, err error)
 
-// GenerateSliceOfUint() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
+// Creates a slice of a given size and populates its values with the given
+// generator (which may be nil).
 func GenerateSliceOfUint(size int, generator func(index int) (result uint, err error)) (result []uint, err error)
 
-// GenerateSliceOfString() creates a slice of a given size and populates its
-// values with the given generator (which may be nil)
+// Creates a slice of a given size and populates its values with the given
+// generator (which may be nil).
 func GenerateSliceOfString(size int, generator func(index int) (result string, err error)) (result []string, err error)
 ```
+
+#### `SelectSlice` Functions
+
+Modelled after **Ruby**'s `Enumerable#select()`, these functions provide for selecting elements of a given slice of a given type into a new slice of the given type.
+
 
 ```Go
 // in "github.com/synesissoftware/ANGoLS/slices"
@@ -143,6 +186,8 @@ func SelectSliceOfString(input_slice []string, selector func(index int, input_it
 
 
 ### Strings
+
+#### Conversion Functions
 
 ```Go
 // in "github.com/synesissoftware/ANGoLS/strings"
@@ -164,7 +209,11 @@ func ASCIIToLower(s string) string
 // are known to contain only ASCII and a faster conversion than is provided
 // by the standard `ToUpper()` is desired.
 func ASCIIToUpper(s string) string
+```
 
+#### `Index` Functions
+
+```Go
 // Finds the index of the given substring in the given string, starting from
 // the position after the given index. -1 is returned if the find is not
 // successful.
@@ -231,11 +280,13 @@ func IndexFuncAfter(s string, f func(rune) bool, ix int) int
 func IndexNotAnyAfter(s string, chars string, ix int) int
 ```
 
+#### `Split` Functions
+
 ```Go
 // in "github.com/synesissoftware/ANGoLS/strings"
 
-// SplitAfterByte slices a string into all substings after each instance of
-// the byte sep and returns a slice of those substrings.
+// Slices a string into all substings after each instance of the byte sep
+// and returns a slice of those substrings.
 //
 // If s does not contain sep, SplitAfterByte returns a slice of length 1
 // whose only element is s.
@@ -243,8 +294,8 @@ func IndexNotAnyAfter(s string, chars string, ix int) int
 // It is equivalent to [SplitAfterByteN] with a count of -1.
 func SplitAfterByte(s string, sep byte) []string
 
-// SplitAfterByteN slices s into substrings after each instance of the byte
-// sep and returns a slice of those substrings.
+// Slices s into substrings after each instance of the byte sep and returns
+// a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -253,8 +304,8 @@ func SplitAfterByte(s string, sep byte) []string
 //   - n < 0: all substrings.
 func SplitAfterByteN(s string, sep byte, ix int) []string
 
-// SplitAfterRune slices a string into all substings after each instance of
-// the rune sep and returns a slice of those substrings.
+// Slices a string into all substings after each instance of the rune sep
+// and returns a slice of those substrings.
 //
 // If s does not contain sep, SplitAfterRune returns a slice of length 1
 // whose only element is s.
@@ -262,8 +313,8 @@ func SplitAfterByteN(s string, sep byte, ix int) []string
 // It is equivalent to [SplitAfterRuneN] with a count of -1.
 func SplitAfterRune(s string, sep rune) []string
 
-// SplitAfterRuneN slices s into substrings after each instance of the rune
-// sep and returns a slice of those substrings.
+// Slices s into substrings after each instance of the rune sep and returns
+// a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -272,8 +323,8 @@ func SplitAfterRune(s string, sep rune) []string
 //   - n < 0: all substrings.
 func SplitAfterRuneN(s string, sep rune, ix int) []string
 
-// SplitAfterAny slices a string into all substings after each instance of
-// any of the runes in chars and returns a slice of those substrings.
+// Slices a string into all substings after each instance of any of the
+// runes in chars and returns a slice of those substrings.
 //
 // If s does not contain any of the runes in chars and chars is not empty,
 // SplitAfterAny returns a slice of length 1 whose only element is s.
@@ -281,8 +332,8 @@ func SplitAfterRuneN(s string, sep rune, ix int) []string
 // It is equivalent to [SplitAfterAnyN] with a count of -1.
 func SplitAfterAny(s, chars string) []string
 
-// SplitAfterAnyN slices s into substrings after each instance of any of the
-// runes in chars and returns a slice of those substrings.
+// Slices s into substrings after each instance of any of the runes in chars
+// and returns a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -291,9 +342,8 @@ func SplitAfterAny(s, chars string) []string
 //   - n < 0: all substrings.
 func SplitAfterAnyN(s, chars string, ix int) []string
 
-// SplitAfterAnyBytes slices a string into all substings after each
-// instance of any of the bytes in seps and returns a slice of those
-// substrings.
+// Slices a string into all substings after each instance of any of the
+// bytes in seps and returns a slice of those substrings.
 //
 // If s does not contain any of the bytes in seps and seps is not empty,
 // SplitAfterAnyBytes returns a slice of length 1 whose only element is s.
@@ -301,9 +351,8 @@ func SplitAfterAnyN(s, chars string, ix int) []string
 // It is equivalent to [SplitAfterAnyBytesN] with a count of -1.
 func SplitAfterAnyBytes(s string, seps []byte) []string
 
-// SplitAfterAnyBytesN slices a string into all substings after each
-// instance of any of the bytes in seps and returns a slice of those
-// substrings.
+// Slices a string into all substings after each instance of any of the
+// bytes in seps and returns a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -312,9 +361,8 @@ func SplitAfterAnyBytes(s string, seps []byte) []string
 //   - n < 0: all substrings.
 func SplitAfterAnyBytesN(s string, seps []byte, ix int) []string
 
-// SplitAfterAnyRunes slices a string into all substings after each
-// instance of any of the runes in seps and returns a slice of those
-// substrings.
+// Slices a string into all substings after each instance of any of the
+// runes in seps and returns a slice of those substrings.
 //
 // If s does not contain any of the runes in seps and seps is not empty,
 // SplitAfterAnyRunes returns a slice of length 1 whose only element is s.
@@ -322,9 +370,8 @@ func SplitAfterAnyBytesN(s string, seps []byte, ix int) []string
 // It is equivalent to [SplitAfterAnyN] with a count of -1.
 func SplitAfterAnyRunes(s string, seps []rune) []string
 
-// SplitAfterAnyRunesN slices a string into all substings after each
-// instance of any of the runes in seps and returns a slice of those
-// substrings.
+// Slices a string into all substings after each instance of any of the
+// runes in seps and returns a slice of those substrings.
 //
 // ix determines the number of substrings to return:
 //   - n > 0: at most n substrings; the last substring being the unsplit
@@ -334,17 +381,19 @@ func SplitAfterAnyRunes(s string, seps []rune) []string
 func SplitAfterAnyRunesN(s string, seps []rune, ix int) []string
 ```
 
+#### `Chomp` Functions
+
 ```Go
 // in "github.com/synesissoftware/ANGoLS/strings"
 
-// StringChomp() takes a single string and returns a chomped version of it,
-// where chomping removes a single trailing '\n' character, a single
-// trailing '\r' character, or a single trailing sequence of "\r\n"
+// Takes a single string and returns a chomped version of it, where chomping
+// removes a single trailing '\n' character, a single trailing '\r'
+// character, or a single trailing sequence of "\r\n".
 func StringChomp(s string) string
 
-// StringChompAll() takes a single string and returns a fully/repeatedly
-// chomped version of, where full/repeated chomping removes all trailing
-// '\r' and/or '\n' characters
+// Takes a single string and returns a fully/repeatedly chomped version of,
+// where full/repeated chomping removes all trailing '\r' and/or '\n'
+// characters.
 func StringChompAll(s string) string
 ```
 
