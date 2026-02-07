@@ -4,6 +4,7 @@
 
 * simple refactoring of `ASCIIToLower()` and `ASCIIToUpper()`;
 * changed signature of `CollectSlice()`, including making be a generic function (`CollectSlice[T, U]()`);
+* refactored `CollectSliceIntoStringSlice()` in terms of `CollectSlice[T, U]()`;
 * refactor `CollectSliceOfInt()` in terms of `CollectSliceOfInteger[T]()`;
 * refactored `EqualSliceOfInt()` in terms of `EqualSliceOfInteger[T]()`;
 * refactored `EqualSliceOfUint()` in terms of `EqualSliceOfInteger[T]()`;

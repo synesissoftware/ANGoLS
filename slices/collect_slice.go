@@ -86,19 +86,9 @@ func CollectSliceOfString(input_slice []string, collector func(input_item string
 // This function maps an input slice of []T to an output slice of []string.
 func CollectSliceIntoStringSlice[T any](input_slice []T, collector func(input_item *T) (string, error)) ([]string, error) {
 
-	result_slice := make([]string, len(input_slice))
-
-	for i, t := range input_slice {
-
-		s, err := collector(&t)
-		if err != nil {
-			return []string{}, err
-		}
-
-		result_slice[i] = s
-	}
-
-	return result_slice, nil
+	return CollectSlice(input_slice, func(_ int, input_item *T) (string, error) {
+		return collector(input_item)
+	})
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */
