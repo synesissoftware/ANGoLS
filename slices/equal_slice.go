@@ -16,6 +16,8 @@ import (
 // /////////////////////////////////////////////////////////////////////////
 // EqualSlice*()
 
+// Indicates whether two []int slices have the same size, contents, and
+// order.
 func EqualSliceOfInt(lhs, rhs []int) bool {
 
 	len_l := len(lhs)
@@ -38,6 +40,8 @@ func EqualSliceOfInt(lhs, rhs []int) bool {
 	}
 }
 
+// Indicates whether two []uint slices have the same size, contents, and
+// order.
 func EqualSliceOfUInt(lhs, rhs []uint) bool {
 
 	len_l := len(lhs)
@@ -82,6 +86,8 @@ func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 |
 	}
 }
 
+// Indicates whether two []float64 slices have the same size, contents, and
+// order.
 func EqualSliceOfFloat64(lhs, rhs []float64) bool {
 
 	len_l := len(lhs)
@@ -104,6 +110,8 @@ func EqualSliceOfFloat64(lhs, rhs []float64) bool {
 	}
 }
 
+// Indicates whether two []string slices have the same size, contents, and
+// order.
 func EqualSliceOfString(lhs, rhs []string) bool {
 
 	len_l := len(lhs)
