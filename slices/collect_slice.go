@@ -53,18 +53,9 @@ func CollectSlice(input_slice any, fn func(input_item any) (any, error)) ([]any,
 }
 
 // This function maps an input slice of []int to an output slice of []int.
-func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_slice []int) {
+func CollectSliceOfInt(input_slice []int, collector func(input_item int) int) ([]int) {
 
-	result_slice = make([]int, len(input_slice))
-
-	for i, v := range input_slice {
-
-		result := fn(v)
-
-		result_slice[i] = result
-	}
-
-	return
+	return CollectSliceOfInteger(input_slice, collector)
 }
 
 // This function maps an input slice of []N to an output slice of []N, where

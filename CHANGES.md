@@ -3,6 +3,7 @@
 ## 0.10.0-alpha1 - 7th February 2026
 
 * simple refactoring of `ASCIIToLower()` and `ASCIIToUpper()`;
+* refactor `CollectSliceOfInt()` in terms of `CollectSliceOfInteger[T]()`;
 * refactored `EqualSliceOfInt()` in terms of `EqualSliceOfInteger[T]()`;
 * refactored `EqualSliceOfUint()` in terms of `EqualSliceOfInteger[T]()`;
 * changed signature of `EqualSlice()`, including making be a generic function (`EqualSlice[T]()`);
