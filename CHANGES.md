@@ -1,6 +1,6 @@
 # **ANGoLS** Changes
 
-## 0.10.0-alpha1 - 7th February 2026
+## 0.10.0-beta1 - 7th February 2026
 
 * simple refactoring of `ASCIIToLower()` and `ASCIIToUpper()`;
 * changed signature of `CollectSlice()`, including making be a generic function (`CollectSlice[T, U]()`);
