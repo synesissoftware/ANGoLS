@@ -12,100 +12,64 @@ package slices
 // /////////////////////////////////////////////////////////////////////////
 // Select*
 
+// Selects elements of an input slice of []int to an output slice of []int,
+// according to the given selector function.
 func SelectSliceOfInt(input_slice []int, selector func(index int, input_item int) (bool, error)) ([]int, error) {
 
-	input_len := len(input_slice)
-	result := make([]int, input_len)
-	result_len := 0
-
-	for i, v := range input_slice {
-
-		selected, err := selector(i, v)
-		if err != nil {
-
-			return nil, err
-		}
-
-		if selected {
-
-			result[result_len] = v
-			result_len++
-		}
-	}
-
-	return result[0:result_len], nil
+	return SelectSliceOfInteger(input_slice, selector)
 }
 
+// Selects elements of an input slice of []uint to an output slice of
+// []uint, according to the given selector function.
 func SelectSliceOfUint(input_slice []uint, selector func(index int, input_item uint) (bool, error)) ([]uint, error) {
 
-	input_len := len(input_slice)
-	result := make([]uint, input_len)
-	result_len := 0
-
-	for i, v := range input_slice {
-
-		selected, err := selector(i, v)
-		if err != nil {
-
-			return nil, err
-		}
-
-		if selected {
-
-			result[result_len] = v
-			result_len++
-		}
-	}
-
-	return result[0:result_len], nil
+	return SelectSliceOfInteger(input_slice, selector)
 }
 
+// Selects elements of an input slice of []N to an output slice of []N,
+// according to the given selector function.
 func SelectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error) {
 
-	input_len := len(input_slice)
-	result := make([]N, input_len)
-	result_len := 0
+	r := make([]N, 0, len(input_slice))
 
 	for i, v := range input_slice {
 
-		selected, err := selector(i, v)
-		if err != nil {
+		if selected, err := selector(i, v); err != nil {
 
 			return nil, err
-		}
+		} else {
 
-		if selected {
+			if selected {
 
-			result[result_len] = v
-			result_len++
+				r = append(r, v)
+			}
 		}
 	}
 
-	return result[0:result_len], nil
+	return r, nil
 }
 
+// Selects elements of an input slice of []string to an output slice of
+// []string, according to the given selector function.
 func SelectSliceOfString(input_slice []string, selector func(index int, input_item string) (bool, error)) ([]string, error) {
 
-	input_len := len(input_slice)
-	result := make([]string, input_len)
-	result_len := 0
+	r := make([]string, 0, len(input_slice))
 
-	for i, v := range input_slice {
+	for i, s := range input_slice {
 
-		selected, err := selector(i, v)
-		if err != nil {
+		if selected, err := selector(i, s); err != nil {
 
 			return nil, err
-		}
+		} else {
 
-		if selected {
+			if selected {
 
-			result[result_len] = v
-			result_len++
+				r = append(r, s)
+			}
 		}
 	}
 
-	return result[0:result_len], nil
+	return r, nil
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */

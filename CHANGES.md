@@ -3,6 +3,11 @@
 ## 0.10.0-alpha1 - 7th February 2026
 
 * renamed `SelectSliceOfUinteger()` => `SelectSliceOfInteger()`;
+* simplified implementation of `SelectSliceOfInteger[T]()`;
+* added unit-tests for `SelectSliceOfInt()` and `SelectSliceOfString()`;
+* refactored `SelectSliceOfInt()` in terms of `SelectSliceOfInteger[T]()`;
+* refactored `SelectSliceOfUint()` in terms of `SelectSliceOfInteger[T]()`;
+* simplified implementation of `SelectSliceOfString()`;
 
 
 ## 0.9.1 - 7th February 2026
