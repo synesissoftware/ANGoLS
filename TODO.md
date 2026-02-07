@@ -11,23 +11,25 @@ recls for Go
 
 ## 0.9.x Items
 
-* simplify `CollectSlice()`;
-* add unit-testing for `slices` functions;
-* enhance code coverage in unit-tests;
+* ~~simplify `CollectSlice()`~~ - ✅;
+* ~~add unit-testing for `slices` functions~~ - ✅;
+* ~~enhance code coverage in unit-tests~~ - ✅;
 
 
 ## 0.10+ Items
 
-* change semantics of `CollectSlice()`, `EqualSlice()` to not take `any`, but (at least) `[]any`;
-* correct all `slices` functions to proper naming, including `Uint` rather than `UInt`;
-* `GenerateSliceOfInteger[T]()`;
+* ~~change semantics of `CollectSlice()`, `EqualSlice()` to not take `any`, but (at least) `[]any`~~ - ✅;
+* ~~correct all `slices` functions to proper naming, including `Uint` rather than `Uint`~~ - ✅;
+* ~~`GenerateSliceOfInteger[T]()`~~ - ✅;
 * `SelectSlice[T]()`;
-* expand coverage of specific types for `EqualSlice[T]()`;
+* ~~expand coverage of specific types for `EqualSlice[T]()`~~ - ✅;
+* ~~enhance code coverage in unit-tests~~ - ✅;
 
 
 ## 0.11+ Items
 
 * simplify names, e.g. `CollectSlice()` => `Collect()`, and so forth;
+* apply `~` on generics;
 * \<none>
 
 

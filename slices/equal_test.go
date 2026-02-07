@@ -8,6 +8,20 @@ import (
 	"testing"
 )
 
+func Test_EqualSlice(t *testing.T) {
+
+	{
+		assert.True(t, slices.EqualSlice([]int{}, []int{}))
+		assert.True(t, slices.EqualSlice([]int{1}, []int{1}))
+		assert.False(t, slices.EqualSlice([]int{1}, []int{2}))
+
+		assert.True(t, slices.EqualSlice([]int{1, 2, 3, 4}, []int{1, 2, 3, 4}))
+		assert.False(t, slices.EqualSlice([]int{1, 2, 3, 4}, []int{1, 2, 4, 3}))
+
+		assert.True(t, slices.EqualSlice([]int{1, 2, 3, 4, 5}[:4], []int{1, 2, 3, 4, 6}[:4]))
+	}
+}
+
 func Test_EqualSliceOfInt(t *testing.T) {
 
 	{
@@ -36,14 +50,14 @@ func Test_EqualSliceOfInt(t *testing.T) {
 func Test_EqualSliceOfUint(t *testing.T) {
 
 	{
-		assert.True(t, slices.EqualSliceOfUInt([]uint{}, []uint{}))
-		assert.True(t, slices.EqualSliceOfUInt([]uint{1}, []uint{1}))
-		assert.False(t, slices.EqualSliceOfUInt([]uint{1}, []uint{2}))
+		assert.True(t, slices.EqualSliceOfUint([]uint{}, []uint{}))
+		assert.True(t, slices.EqualSliceOfUint([]uint{1}, []uint{1}))
+		assert.False(t, slices.EqualSliceOfUint([]uint{1}, []uint{2}))
 
-		assert.True(t, slices.EqualSliceOfUInt([]uint{1, 2, 3, 4}, []uint{1, 2, 3, 4}))
-		assert.False(t, slices.EqualSliceOfUInt([]uint{1, 2, 3, 4}, []uint{1, 2, 4, 3}))
+		assert.True(t, slices.EqualSliceOfUint([]uint{1, 2, 3, 4}, []uint{1, 2, 3, 4}))
+		assert.False(t, slices.EqualSliceOfUint([]uint{1, 2, 3, 4}, []uint{1, 2, 4, 3}))
 
-		assert.True(t, slices.EqualSliceOfUInt([]uint{1, 2, 3, 4, 5}[:4], []uint{1, 2, 3, 4, 6}[:4]))
+		assert.True(t, slices.EqualSliceOfUint([]uint{1, 2, 3, 4, 5}[:4], []uint{1, 2, 3, 4, 6}[:4]))
 	}
 
 	{

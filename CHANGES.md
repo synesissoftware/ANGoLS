@@ -1,5 +1,22 @@
 # **ANGoLS** Changes
 
+## 0.10.0-beta1 - 7th February 2026
+
+* simple refactoring of `ASCIIToLower()` and `ASCIIToUpper()`;
+* changed signature of `CollectSlice()`, including making be a generic function (`CollectSlice[T, U]()`);
+* refactored `CollectSliceIntoStringSlice()` in terms of `CollectSlice[T, U]()`;
+* refactor `CollectSliceOfInt()` in terms of `CollectSliceOfInteger[T]()`;
+* refactored `EqualSliceOfInt()` in terms of `EqualSliceOfInteger[T]()`;
+* refactored `EqualSliceOfUint()` in terms of `EqualSliceOfInteger[T]()`;
+* changed signature of `EqualSlice()`, including making be a generic function (`EqualSlice[T]()`);
+* renamed `SelectSliceOfUinteger()` => `SelectSliceOfInteger()`;
+* simplified implementation of `SelectSliceOfInteger[T]()`;
+* added unit-tests for `SelectSliceOfInt()` and `SelectSliceOfString()`;
+* refactored `SelectSliceOfInt()` in terms of `SelectSliceOfInteger[T]()`;
+* refactored `SelectSliceOfUint()` in terms of `SelectSliceOfInteger[T]()`;
+* simplified implementation of `SelectSliceOfString()`;
+
+
 ## 0.9.1 - 7th February 2026
 
 * fixed `EqualSliceOfInteger[]()` return type;

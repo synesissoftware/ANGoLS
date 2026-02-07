@@ -9,73 +9,43 @@
 
 package slices
 
-import (
-	"fmt"
-	"reflect"
-)
-
 // /////////////////////////////////////////////////////////////////////////
 // Collect*
 
-// This function maps an input slice of arbitrary type to an output slice of
-// type []any.
-func CollectSlice(input_slice any, fn func(input_item any) (any, error)) ([]any, error) {
+// This function maps an input slice of T[] to an output slice of []U using
+// the given collector.
+func CollectSlice[T any, U any](input_slice []T, collector func(index int, input_item *T) (U, error)) ([]U, error) {
 
-	sl_t := reflect.TypeOf(input_slice)
+	result := make([]U, len(input_slice))
 
-	if reflect.Slice != sl_t.Kind() {
+	for i := 0; i != len(input_slice); i++ {
 
-		msg := fmt.Sprintf("CollectSlice() called with input_slice of type %T; slice required", input_slice)
+		if r, err := collector(i, &input_slice[i]); err != nil {
+			return nil, err
+		} else {
 
-		panic(msg)
-	}
-
-	sl_v := reflect.ValueOf(input_slice)
-	len := sl_v.Len()
-
-	result := make([]any, len)
-
-	for i := 0; len != i; i++ {
-
-		p := sl_v.Index(i)
-		v := p.Interface()
-
-		r, e := fn(v)
-		if e != nil {
-
-			return nil, e
+			result[i] = r
 		}
-
-		result[i] = r
 	}
 
 	return result, nil
 }
 
 // This function maps an input slice of []int to an output slice of []int.
-func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_slice []int) {
+func CollectSliceOfInt(input_slice []int, collector func(input_item int) int) ([]int) {
 
-	result_slice = make([]int, len(input_slice))
-
-	for i, v := range input_slice {
-
-		result := fn(v)
-
-		result_slice[i] = result
-	}
-
-	return
+	return CollectSliceOfInteger(input_slice, collector)
 }
 
 // This function maps an input slice of []N to an output slice of []N, where
 // N is any integer type.
-func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N) {
+func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, collector func(input_item N) N) (result_slice []N) {
 
 	result_slice = make([]N, len(input_slice))
 
 	for i, v := range input_slice {
 
-		result := fn(v)
+		result := collector(v)
 
 		result_slice[i] = result
 	}
@@ -85,13 +55,13 @@ func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16
 
 // This function maps an input slice of []float64 to an output slice of
 // []float64.
-func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) float64) (result_slice []float64) {
+func CollectSliceOfFloat64(input_slice []float64, collector func(input_item float64) float64) (result_slice []float64) {
 
 	result_slice = make([]float64, len(input_slice))
 
 	for i, v := range input_slice {
 
-		result := fn(v)
+		result := collector(v)
 
 		result_slice[i] = result
 	}
@@ -101,34 +71,24 @@ func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) fl
 
 // This function maps an input slice of []string to an output slice of
 // []string.
-func CollectSliceOfString(input_slice []string, fn func(input_item string) string) (result_slice []string) {
+func CollectSliceOfString(input_slice []string, collector func(input_item string) string) (result_slice []string) {
 
 	result_slice = make([]string, len(input_slice))
 
 	for i, s := range input_slice {
 
-		result_slice[i] = fn(s)
+		result_slice[i] = collector(s)
 	}
 
 	return
 }
 
 // This function maps an input slice of []T to an output slice of []string.
-func CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error) {
+func CollectSliceIntoStringSlice[T any](input_slice []T, collector func(input_item *T) (string, error)) ([]string, error) {
 
-	result_slice := make([]string, len(input_slice))
-
-	for i, t := range input_slice {
-
-		s, err := fn(&t)
-		if err != nil {
-			return []string{}, err
-		}
-
-		result_slice[i] = s
-	}
-
-	return result_slice, nil
+	return CollectSlice(input_slice, func(_ int, input_item *T) (string, error) {
+		return collector(input_item)
+	})
 }
 
 /* ///////////////////////////// end of file //////////////////////////// */

@@ -37,23 +37,23 @@ func Test_SelectSliceOfInt_1(t *testing.T) {
 	}
 }
 
-func Test_SelectSliceOfUInt_1(t *testing.T) {
+func Test_SelectSliceOfUint_1(t *testing.T) {
 
-	input, err := slices.GenerateSliceOfUInt(10, func(index int) (uint, error) { return uint(index), nil })
+	input, err := slices.GenerateSliceOfUint(10, func(index int) (uint, error) { return uint(index), nil })
 	if err != nil {
 
-		t.Errorf("GenerateSliceOfUInt() failed: %v\n", err)
+		t.Errorf("GenerateSliceOfUint() failed: %v\n", err)
 	} else {
 
-		actual, err := slices.SelectSliceOfUInt(input, func(index int, value uint) (bool, error) { return 0 == (value % 2), nil })
+		actual, err := slices.SelectSliceOfUint(input, func(index int, value uint) (bool, error) { return 0 == (value % 2), nil })
 		if err != nil {
 
-			t.Errorf("SelectSliceOfUInt() failed: %v\n", err)
+			t.Errorf("SelectSliceOfUint() failed: %v\n", err)
 		} else {
 
 			expected := []uint{0, 2, 4, 6, 8}
 
-			if !slices.EqualSliceOfUInt(expected, actual) {
+			if !slices.EqualSliceOfUint(expected, actual) {
 
 				t.Errorf("actual value '%v' does not equal expected value '%v'", actual, expected)
 			}

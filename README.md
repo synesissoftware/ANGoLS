@@ -96,27 +96,26 @@ Modelled after **Ruby**'s `Enumerable#collect()`, these functions provide for tr
 ```Go
 // in "github.com/synesissoftware/ANGoLS/slices"
 
-// This function maps an input slice of arbitrary type to an output slice of
-// type []any.
-func CollectSlice(input_slice any, fn func(input_item any) (any, error)) ([]any, error)
+// This function maps an input slice of T[] to an output slice of []T.
+func CollectSlice[T any](input_slice []T, collector func(index int, input_item *T) (T, error)) ([]T, error)
 
 // This function maps an input slice of []int to an output slice of []int.
-func CollectSliceOfInt(input_slice []int, fn func(input_item int) int) (result_slice []int)
+func CollectSliceOfInt(input_slice []int, collector func(input_item int) int) (result_slice []int)
 
 // This function maps an input slice of []N to an output slice of []N, where
 // N is any integer type.
-func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N)
+func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, collector func(input_item N) N) (result_slice []N)
 
 // This function maps an input slice of []float64 to an output slice of
 // []float64.
-func CollectSliceOfFloat64(input_slice []float64, fn func(input_item float64) float64) (result_slice []float64)
+func CollectSliceOfFloat64(input_slice []float64, collector func(input_item float64) float64) (result_slice []float64)
 
 // This function maps an input slice of []string to an output slice of
 // []string.
-func CollectSliceOfString(input_slice []string, fn func(input_item string) string) (result_slice []string)
+func CollectSliceOfString(input_slice []string, collector func(input_item string) string) (result_slice []string)
 
 // This function maps an input slice of []T to an output slice of []string.
-func CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error)
+func CollectSliceIntoStringSlice[T any](input_slice []T, collector func(input_item *T) (string, error)) ([]string, error)
 ```
 
 #### `EqualSlice` Functions
@@ -132,7 +131,7 @@ func EqualSliceOfInt(lhs, rhs []int) bool
 
 // Indicates whether two []uint slices have the same size, contents, and
 // order.
-func EqualSliceOfUInt(lhs, rhs []uint) bool
+func EqualSliceOfUint(lhs, rhs []uint) bool
 
 func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool
 
@@ -160,7 +159,7 @@ func GenerateSliceOfInt(size int, generator func(index int) (result int, err err
 
 // Creates a slice of a given size and populates its values with the given
 // generator (which may be nil).
-func GenerateSliceOfUInt(size int, generator func(index int) (result uint, err error)) (result []uint, err error)
+func GenerateSliceOfUint(size int, generator func(index int) (result uint, err error)) (result []uint, err error)
 
 // Creates a slice of a given size and populates its values with the given
 // generator (which may be nil).
@@ -177,9 +176,9 @@ Modelled after **Ruby**'s `Enumerable#select()`, these functions provide for sel
 
 func SelectSliceOfInt(input_slice []int, selector func(index int, input_item int) (bool, error)) ([]int, error)
 
-func SelectSliceOfUInt(input_slice []uint, selector func(index int, input_item uint) (bool, error)) ([]uint, error)
+func SelectSliceOfUint(input_slice []uint, selector func(index int, input_item uint) (bool, error)) ([]uint, error)
 
-func SelectSliceOfUInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error)
+func SelectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, selector func(index int, input_item N) (bool, error)) ([]N, error)
 
 func SelectSliceOfString(input_slice []string, selector func(index int, input_item string) (bool, error)) ([]string, error)
 ```
