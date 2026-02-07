@@ -1,8 +1,9 @@
 package angols_test
 
 import (
-	"github.com/stretchr/testify/require"
 	angols "github.com/synesissoftware/ANGoLS"
+
+	"github.com/stretchr/testify/require"
 
 	"testing"
 )
@@ -10,7 +11,7 @@ import (
 const (
 	Expected_VersionMajor uint16 = 0
 	Expected_VersionMinor uint16 = 9
-	Expected_VersionPatch uint16 = 0
+	Expected_VersionPatch uint16 = 1
 	Expected_VersionAB    uint16 = 0xFFFF
 )
 
@@ -22,9 +23,9 @@ func Test_Version_Elements(t *testing.T) {
 }
 
 func Test_Version(t *testing.T) {
-	require.Equal(t, uint64(0x0000_0009_0000_FFFF), angols.Version)
+	require.Equal(t, uint64(0x0000_0009_0001_FFFF), angols.Version)
 }
 
 func Test_Version_String(t *testing.T) {
-	require.Equal(t, "0.9.0", angols.VersionString())
+	require.Equal(t, "0.9.1", angols.VersionString())
 }

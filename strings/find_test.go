@@ -1,8 +1,9 @@
 package strings_test
 
 import (
-	"github.com/stretchr/testify/require"
 	strings "github.com/synesissoftware/ANGoLS/strings"
+
+	"github.com/stretchr/testify/require"
 
 	"testing"
 )
