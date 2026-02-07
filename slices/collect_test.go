@@ -17,6 +17,24 @@ const (
 
 // Tests
 
+func Test_CollectSlice_int_INTO_string(t *testing.T) {
+
+	collector := func(index int, input_item *int) (string, error) {
+
+		return strconv.Itoa(*input_item), nil
+	}
+
+	input := []int{1, -2, 3}
+	expected := []string{"1", "-2", "3"}
+
+	actual, err := slices.CollectSlice(input, collector)
+	if err != nil {
+
+	} else {
+		assert.Equal(t, expected, actual)
+	}
+}
+
 func Test_Collect_Array_1_ints_to_ints(t *testing.T) {
 
 	collector := func(index int, input_item *int) (int, error) {

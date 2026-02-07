@@ -12,10 +12,11 @@ package slices
 // /////////////////////////////////////////////////////////////////////////
 // Collect*
 
-// This function maps an input slice of T[] to an output slice of []T.
-func CollectSlice[T any](input_slice []T, collector func(index int, input_item *T) (T, error)) ([]T, error) {
+// This function maps an input slice of T[] to an output slice of []U using
+// the given collector.
+func CollectSlice[T any, U any](input_slice []T, collector func(index int, input_item *T) (U, error)) ([]U, error) {
 
-	result := make([]T, len(input_slice))
+	result := make([]U, len(input_slice))
 
 	for i := 0; i != len(input_slice); i++ {
 
