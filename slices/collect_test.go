@@ -10,8 +10,7 @@ import (
 )
 
 const (
-	int_equal_iterations = 100000
-	int_equal_size       = 100
+	int_equal_size = 1_000
 )
 
 // Tests
@@ -183,7 +182,9 @@ func Benchmark_equal_ints_by_EqualSliceOfInt(b *testing.B) {
 	ints_1, _ := slices.GenerateSliceOfInt(int_equal_size, fn)
 	ints_2, _ := slices.GenerateSliceOfInt(int_equal_size, fn)
 
-	for i := 0; i != int_equal_iterations; i++ {
+	b.ResetTimer()
+
+	for b.Loop() {
 
 		_ = slices.EqualSliceOfInt(ints_1, ints_2)
 	}
@@ -195,7 +196,9 @@ func Benchmark_equal_ints_by_EqualSlice(b *testing.B) {
 	ints_1, _ := slices.GenerateSliceOfInt(int_equal_size, fn)
 	ints_2, _ := slices.GenerateSliceOfInt(int_equal_size, fn)
 
-	for i := 0; i != int_equal_iterations; i++ {
+	b.ResetTimer()
+
+	for b.Loop() {
 
 		_ = slices.EqualSlice(ints_1, ints_2)
 	}
@@ -207,7 +210,9 @@ func Benchmark_equal_uints_by_EqualSlice(b *testing.B) {
 	ints_1, _ := slices.GenerateSliceOfUint(int_equal_size, fn)
 	ints_2, _ := slices.GenerateSliceOfUint(int_equal_size, fn)
 
-	for i := 0; i != int_equal_iterations; i++ {
+	b.ResetTimer()
+
+	for b.Loop() {
 
 		_ = slices.EqualSlice(ints_1, ints_2)
 	}
@@ -223,7 +228,7 @@ func Test_CollectSliceIntoStringSlice(t *testing.T) {
 		"Maverick",
 	}
 
-	result, err := slices.CollectSliceIntoStringSlice[Nickname](nicknames, func(input_item *Nickname) (string, error) {
+	result, err := slices.CollectSliceIntoStringSlice(nicknames, func(input_item *Nickname) (string, error) {
 		return string(*input_item), nil
 	})
 
@@ -248,7 +253,7 @@ func Test_CollectSliceIntoStringSlice_with_CaseTesting(t *testing.T) {
 		"Maverick",
 	}
 
-	result, err := slices.CollectSliceIntoStringSlice[Nickname](nicknames, func(input_item *Nickname) (string, error) {
+	result, err := slices.CollectSliceIntoStringSlice(nicknames, func(input_item *Nickname) (string, error) {
 		return strings.ToUpper(string(*input_item)), nil
 	})
 
@@ -271,7 +276,7 @@ func Test_CollectSliceIntoStringSlice_with_Ints(t *testing.T) {
 		3,
 	}
 
-	result, err := slices.CollectSliceIntoStringSlice[int](values, func(input_item *int) (string, error) {
+	result, err := slices.CollectSliceIntoStringSlice(values, func(input_item *int) (string, error) {
 		return strconv.Itoa(*input_item), nil
 	})
 
@@ -296,7 +301,7 @@ func Test_CollectSliceIntoStringSlice_with_Fail(t *testing.T) {
 		"Maverick",
 	}
 
-	_, err := slices.CollectSliceIntoStringSlice[Nickname](nicknames, func(input_item *Nickname) (string, error) {
+	_, err := slices.CollectSliceIntoStringSlice(nicknames, func(input_item *Nickname) (string, error) {
 		if strings.Contains(string(*input_item), "k") {
 			return "", fmt.Errorf("invalid nickname: %s", *input_item)
 		}

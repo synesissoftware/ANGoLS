@@ -1,5 +1,10 @@
 # **ANGoLS** Changes
 
+## 0.10.0-alpha1 - 7th February 2026
+
+* renamed `SelectSliceOfUinteger()` => `SelectSliceOfInteger()`;
+
+
 ## 0.9.1 - 7th February 2026
 
 * fixed `EqualSliceOfInteger[]()` return type;

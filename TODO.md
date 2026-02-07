@@ -11,9 +11,9 @@ recls for Go
 
 ## 0.9.x Items
 
-* simplify `CollectSlice()`;
-* add unit-testing for `slices` functions;
-* enhance code coverage in unit-tests;
+* ~~simplify `CollectSlice()`~~ - ✅;
+* ~~add unit-testing for `slices` functions~~ - ✅;
+* ~~enhance code coverage in unit-tests~~ - ✅;
 
 
 ## 0.10+ Items
@@ -23,6 +23,7 @@ recls for Go
 * `GenerateSliceOfInteger[T]()`;
 * `SelectSlice[T]()`;
 * expand coverage of specific types for `EqualSlice[T]()`;
+* enhance code coverage in unit-tests;
 
 
 ## 0.11+ Items

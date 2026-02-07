@@ -4,7 +4,7 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 6th February 2026
+ * Updated: 7th February 2026
  */
 
 package angols
@@ -13,9 +13,9 @@ import "github.com/synesissoftware/ver2go"
 
 const (
 	VersionMajor uint16 = 0
-	VersionMinor uint16 = 9
-	VersionPatch uint16 = 1
-	VersionAB    uint16 = 0xFFFF
+	VersionMinor uint16 = 10
+	VersionPatch uint16 = 0
+	VersionAB    uint16 = 0x4001
 	Version      uint64 = (uint64(VersionMajor) << 48) + (uint64(VersionMinor) << 32) + (uint64(VersionPatch) << 16) + (uint64(VersionAB) << 0)
 )
 

@@ -43,28 +43,32 @@ func Test_ASCIIToUpper(t *testing.T) {
 
 func Benchmark_ASCIIToLower(b *testing.B) {
 	const s = "Hello, World!"
-	for i := 0; i < b.N; i++ {
+
+	for b.Loop() {
 		_ = strings.ASCIIToLower(s)
 	}
 }
 
 func Benchmark_StringsToLower(b *testing.B) {
 	const s = "Hello, World!"
-	for i := 0; i < b.N; i++ {
+
+	for b.Loop() {
 		_ = stdstrings.ToLower(s)
 	}
 }
 
 func Benchmark_ASCIIToUpper(b *testing.B) {
 	const s = "Hello, World!"
-	for i := 0; i < b.N; i++ {
+
+	for b.Loop() {
 		_ = strings.ASCIIToUpper(s)
 	}
 }
 
 func Benchmark_StringsToUpper(b *testing.B) {
 	const s = "Hello, World!"
-	for i := 0; i < b.N; i++ {
+
+	for b.Loop() {
 		_ = stdstrings.ToUpper(s)
 	}
 }
