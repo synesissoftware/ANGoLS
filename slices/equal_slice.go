@@ -102,6 +102,7 @@ func EqualSliceOfString(lhs, rhs []string) bool {
 	}
 }
 
+// Indicates whether two []T slices have the same size, contents, and order.
 func EqualSlice[T any](lhs, rhs []T) bool {
 
 	// Check for typed variants
