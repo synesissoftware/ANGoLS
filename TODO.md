@@ -18,7 +18,7 @@ recls for Go
 
 ## 0.10+ Items
 
-* change semantics of `CollectSlice()`, `EqualSlice()` to not take `any`, but (at least) `[]any`;
+* ~~change semantics of `CollectSlice()`, `EqualSlice()` to not take `any`, but (at least) `[]any`~~ - ✅;
 * ~~correct all `slices` functions to proper naming, including `Uint` rather than `Uint`~~ - ✅;
 * ~~`GenerateSliceOfInteger[T]()`~~ - ✅;
 * `SelectSlice[T]()`;
