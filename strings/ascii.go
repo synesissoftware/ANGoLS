@@ -4,7 +4,7 @@
 
 /*
  * Created: 1st January 2026
- * Updated: 2nd January 2026
+ * Updated: 7th February 2026
  */
 
 package strings
@@ -18,11 +18,13 @@ package strings
 // by the standard `ToLower()` is desired.
 func ASCIIToLower(s string) string {
 	b := []byte(s)
+
 	for i := 0; i < len(b); i++ {
 		if b[i] >= 'A' && b[i] <= 'Z' {
 			b[i] += 32
 		}
 	}
+
 	return string(b)
 }
 
@@ -35,11 +37,13 @@ func ASCIIToLower(s string) string {
 // by the standard `ToUpper()` is desired.
 func ASCIIToUpper(s string) string {
 	b := []byte(s)
+
 	for i := 0; i < len(b); i++ {
 		if b[i] >= 'a' && b[i] <= 'z' {
 			b[i] -= 32
 		}
 	}
+
 	return string(b)
 }
 
