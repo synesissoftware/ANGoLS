@@ -70,6 +70,55 @@ func generateSliceOfBuiltIn[T bool | int8 | int16 | int32 | int64 | int | uint8 
 	return
 }
 
+// Creates a slice of []T up to a maximum size and populates its values with
+// those created by the given generator.
+//
+// Parameters:
+//   - `size` - maximum size if non-negative; otherwise size unlimited;
+//   - `generator` - function that receives the given loop index, returning
+//     a result to be added into the result-slice, or one of the specific
+//     errors SkipOneElement (to skip a single element) or
+//     SkipRemainingElements (to skip all remaining elements), or another
+//     error to cause the operation to fail;
+func GenerateSlice[T any](size int, generator func(index int) (result T, err error)) (result []T, err error) {
+
+	result = make([]T, 0, size)
+
+	var i int
+
+	for {
+		if size == 0 {
+			break;
+		} else {
+			if size > 0 {
+				size--
+			}
+		}
+
+		value, err := generator(i)
+
+		if err == nil {
+
+			result = append(result, value)
+		} else {
+
+			if SkipOneElement == err {
+
+			} else if SkipRemainingElements == err {
+
+				break
+			} else {
+
+				return nil, err
+			}
+		}
+
+		i++
+	}
+
+	return
+}
+
 // Creates a slice of []N up to a maximum size and populates its values with
 // those created by the given generator.
 //

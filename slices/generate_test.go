@@ -154,3 +154,39 @@ func Test_GenerateSliceOfString_1_itoa_FROM_INDEX_EXCEPT_22(t *testing.T) {
 		}
 	}
 }
+
+func Test_GenerateSlice_1_itoa_FROM_INDEX_EXCEPT_27(t *testing.T) {
+
+	req_len := 40
+	ints, err := slices.GenerateSlice(req_len, func(index int) (s string, err error) {
+		if index == 27 {
+			return "", slices.SkipOneElement
+		}
+
+		s = "[" + strconv.Itoa(index) + "]"
+
+		return
+	})
+	if err != nil {
+
+	} else {
+
+		if len(ints) != req_len-1 {
+
+			t.Errorf("generated slice was required to be of length %d, but %d obtained", req_len, len(ints))
+		}
+
+		for i, v := range ints {
+
+			n := i
+			if i >= 27 {
+				n++
+			}
+
+			if fmt.Sprintf("[%d]", n) != v {
+
+				t.Errorf("element at index %d is expected to be %v, but is %v\n", i, 2*i, v)
+			}
+		}
+	}
+}
