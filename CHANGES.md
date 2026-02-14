@@ -2,6 +2,10 @@
 
 ## 0.10.0-beta2 - 15th February 2026
 
+* added `GenerateSliceOfInteger[T]()`;
+* changed semantics of `GenerateSliceOfInt()`, `GenerateSliceOfUint()`, `GenerateSliceOfString()`,
+* refactored `GenerateSliceOfInt()` in terms of `GenerateSliceOfInteger[T, U]()`;
+* refactored `GenerateSliceOfUint()` in terms of `GenerateSliceOfInteger[T, U]()`;
 * refactored `SkipOneElement` and `SkipRemainingElements`;
 
 
