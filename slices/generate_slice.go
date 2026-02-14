@@ -4,17 +4,32 @@
 
 /*
  * Created: 1st March 2019
- * Updated: 7th February 2026
+ * Updated: 15th February 2026
  */
 
 package slices
 
-import (
-	"errors"
-)
+type skipOneElement struct {
+	s string
+}
 
-var SkipOneElement = errors.New("Skip one element")
-var SkipRemainingElements = errors.New("Skip remaining elements")
+func (e *skipOneElement) Error() string {
+	return e.s
+}
+
+type skipRemainingElements struct {
+	s string
+}
+
+func (e *skipRemainingElements) Error() string {
+	return e.s
+}
+
+// Causes generation of a single element to be skipped.
+var SkipOneElement = &skipOneElement{s: "Skip one element"}
+
+// Causes generation of all remaining elements to be skipped.
+var SkipRemainingElements = &skipRemainingElements{s: "Skip remaining elements"}
 
 // Creates a slice of a given size and populates its values with the given
 // generator (which may be nil).

@@ -1,5 +1,10 @@
 # **ANGoLS** Changes
 
+## 0.10.0-beta2 - 15th February 2026
+
+* refactored `SkipOneElement` and `SkipRemainingElements`;
+
+
 ## 0.10.0-beta1 - 7th February 2026
 
 * simple refactoring of `ASCIIToLower()` and `ASCIIToUpper()`;
