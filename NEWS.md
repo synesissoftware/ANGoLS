@@ -1,4 +1,4 @@
-# ANGoLS - NEWS <!-- omit in toc -->
+# ANGoLS - News <!-- omit in toc -->
 
 
 | Date                | News Item                                                                                                  |

@@ -1,4 +1,4 @@
-# ANGoLS - Authors
+# ANGoLS - Authors <!-- omit in toc -->
 
 ## Contributors:
 
