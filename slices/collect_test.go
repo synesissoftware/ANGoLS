@@ -189,7 +189,7 @@ func Benchmark_equal_ints_by_EqualSliceOfInt(b *testing.B) {
 
 	b.ResetTimer()
 
-	for b.Loop() {
+	for i := 0; i < b.N; i++ {
 
 		_ = slices.EqualSliceOfInt(ints_1, ints_2)
 	}
@@ -203,7 +203,7 @@ func Benchmark_equal_ints_by_EqualSlice(b *testing.B) {
 
 	b.ResetTimer()
 
-	for b.Loop() {
+	for i := 0; i < b.N; i++ {
 
 		_ = slices.EqualSlice(ints_1, ints_2)
 	}
@@ -217,7 +217,7 @@ func Benchmark_equal_uints_by_EqualSlice(b *testing.B) {
 
 	b.ResetTimer()
 
-	for b.Loop() {
+	for i := 0; i < b.N; i++ {
 
 		_ = slices.EqualSlice(ints_1, ints_2)
 	}
