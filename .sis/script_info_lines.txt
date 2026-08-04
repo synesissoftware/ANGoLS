@@ -1,0 +1,2 @@
+ANGoLS provides Algorithms Not in the Go Language Standard library
+Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems

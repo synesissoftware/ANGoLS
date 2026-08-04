@@ -1,4 +1,4 @@
-# ANGoLS.Go Examples
+# ANGoLS - Examples <!-- omit in toc -->
 
 | Name | Source & Description | Summary |
 | ---- | -------------------- | ------- |

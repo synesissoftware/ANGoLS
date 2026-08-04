@@ -16,7 +16,7 @@ func Benchmark_SelectSliceOfInt(b *testing.B) {
 		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
 	}
 
-	for b.Loop() {
+	for i := 0; i < b.N; i++ {
 		for _, input := range inputs {
 			slices.SelectSliceOfInt(input, func(_, _ int) (bool, error) {
 				return true, nil
@@ -33,7 +33,7 @@ func Benchmark_SelectSliceOfString(b *testing.B) {
 		{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
 	}
 
-	for b.Loop() {
+	for i := 0; i < b.N; i++ {
 		for _, input := range inputs {
 			slices.SelectSliceOfString(input, func(_ int, _ string) (bool, error) {
 				return true, nil

@@ -1,13 +1,14 @@
 # ANGoLS <!-- omit in toc -->
 
+**A**lgorithms **N**ot in **Go** **L**anguage **S**tandard library
+
+![Language](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![GitHub release](https://img.shields.io/github/v/release/synesissoftware/ANGoLS.svg)](https://github.com/synesissoftware/ANGoLS/releases/latest)
 [![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/ANGoLS)](https://github.com/synesissoftware/ANGoLS/commits/master)
 [![Go](https://github.com/synesissoftware/ANGoLS/actions/workflows/go.yml/badge.svg)](https://github.com/synesissoftware/ANGoLS/actions/workflows/go.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/synesissoftware/ANGoLS)](https://goreportcard.com/report/github.com/synesissoftware/ANGoLS)
 [![Go Reference](https://pkg.go.dev/badge/github.com/synesissoftware/ANGoLS.svg)](https://pkg.go.dev/github.com/synesissoftware/ANGoLS)
-
-**A**lgorithms **N**ot in **Go** **L**anguage **S**tandard library
 
 
 ## Table of Contents <!-- omit in toc -->
@@ -437,4 +438,3 @@ T.B.C.
 
 
 <!-- ########################### end of file ########################### -->
-

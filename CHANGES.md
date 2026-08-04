@@ -1,4 +1,4 @@
-# **ANGoLS** Changes
+# ANGoLS - CHANGES <!-- omit in toc -->
 
 ## 0.10.0 - 10th March 2026
 
