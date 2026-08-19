@@ -1,5 +1,13 @@
 # ANGoLS - Changes <!-- omit in toc -->
 
+## 0.10.1 - 20th August 2026
+
+* CI modernisation (matrix + lint);
+* CI reliability fixes (macOS test linking; golangci-lint config verification disabled in CI);
+* boilerplate additions (scripts, markdown docs, project identity);
+* removed retired Go Report Card badge from README;
+* version string updated for the 0.10.1 release;
+
 ## 0.10.0 - 10th March 2026
 
 * 0.10.0;
