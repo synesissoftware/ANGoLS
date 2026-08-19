@@ -429,7 +429,11 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Related projects
 
-T.B.C.
+Projects in which **ANGoLS** is used include:
+
+* [**CLASP.Go**](https://github.com/synesissoftware/CLASP.Go/) (development/testing);
+* [**libCLImate.Go**](https://github.com/synesissoftware/libCLImate.Go/);
+* [**libpath.Go**](https://github.com/synesissoftware/libpath.Go/).
 
 
 ### License
