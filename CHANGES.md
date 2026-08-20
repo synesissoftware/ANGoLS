@@ -12,7 +12,7 @@
 * version string updated for the 0.11.0 release;
 
 
-## 0.10.1 - 20th August 2026
+## 0.10.1 - 20th August 2026 (internal release only)
 
 * CI modernisation (matrix + lint);
 * CI reliability fixes (macOS test linking; golangci-lint config verification disabled in CI);
