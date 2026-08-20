@@ -7,7 +7,6 @@ package strings
 import (
 	"errors"
 	"strings"
-	// d "github.com/synesissoftware/Diagnosticism.Go"
 )
 
 type ParseKeyValuePairsListOption int64

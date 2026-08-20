@@ -1,5 +1,17 @@
 # ANGoLS - Changes <!-- omit in toc -->
 
+
+## 0.11.0 - 20th August 2026
+
+* added **Version()** (replacing the **Version** constant), formed by **ver2go.CombineVersion()**;
+* documented **VersionString()**;
+* **VersionAB** now uses **ver2go.Release**;
+* updated **ver2go** to 0.2.0-beta1;
+* updated **STEGoL** to 0.4.0;
+* updated **examples/libver.go** to use **VersionString()**;
+* version string updated for the 0.11.0 release;
+
+
 ## 0.10.1 - 20th August 2026
 
 * CI modernisation (matrix + lint);
