@@ -1,15 +1,23 @@
 # ANGoLS - Authors <!-- omit in toc -->
 
-## Contributors:
 
-* Matt Wilson ([mwsis](https://github.com/mwsis))
-* Harry Wilson ([Hazzoz](https://github.com/Hazzoz))
-* mwrr2319;
+## Major Contributors
 
-----
+| Name         | Email                                | GitHub                              |
+| ------------ | ------------------------------------ | ----------------------------------- |
+| Matt Wilson  | matthew.wilson.synesis@gmail.com     | [mwsis](https://github.com/mwsis)   |
+| Harry Wilson | harold.wilson.synesis@gmail.com      | [Hazzoz](https://github.com/Hazzoz) |
+| mwrr2319     |                                      | [mwrr2319](https://github.com/mwrr2319) |
+
+
+## Defect reports, fixes and suggestions (for which we are very grateful)
+
+| Name    | GitHub |
+| ------- | ------ |
+| \<none> |        |
+
 
 Contributions are welcomed.
 
 
 <!-- ########################### end of file ########################### -->
-

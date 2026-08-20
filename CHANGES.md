@@ -1,4 +1,24 @@
-# ANGoLS - CHANGES <!-- omit in toc -->
+# ANGoLS - Changes <!-- omit in toc -->
+
+
+## 0.11.0 - 20th August 2026
+
+* added **Version()** (replacing the **Version** constant), formed by **ver2go.CombineVersion()**;
+* documented **VersionString()**;
+* **VersionAB** now uses **ver2go.Release**;
+* updated **ver2go** to 0.2.0-beta1;
+* updated **STEGoL** to 0.4.0;
+* updated **examples/libver.go** to use **VersionString()**;
+* version string updated for the 0.11.0 release;
+
+
+## 0.10.1 - 20th August 2026 (internal release only)
+
+* CI modernisation (matrix + lint);
+* CI reliability fixes (macOS test linking; golangci-lint config verification disabled in CI);
+* boilerplate additions (scripts, markdown docs, project identity);
+* removed retired Go Report Card badge from README;
+* version string updated for the 0.10.1 release;
 
 ## 0.10.0 - 10th March 2026
 
@@ -48,18 +68,18 @@
 * 0.9.0
 
 
-## 0.9.0 (beta 2) - 2nd January 2026
+## 0.9.0-beta2 - 2nd January 2026
 
 * added `ASCIIToULower()` and `ASCIIToUpper()`;
 
 
-## 0.9.0 (beta 1) - 27th November 2025
+## 0.9.0-beta1 - 27th November 2025
 
 * added `CollectSliceIntoStringSlice[T any](input_slice []T, fn func(input_item *T) (string, error)) ([]string, error)`;
 * changed return type of `CollectSlice()` from `(any, error)` to `([]any, error)`;
 
 
-## 0.8.0 (alpha 1) - 27th August 2025
+## 0.8.0-alpha1 - 27th August 2025
 
 * added generic function `func CollectSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](input_slice []N, fn func(input_item N) N) (result_slice []N)`;
 * added generic function `func EqualSliceOfInteger[N int8 | int16 | int32 | int64 | int | uint8 | uint16 | uint32 | uint64 | uint | uintptr](lhs, rhs []int) bool`;
@@ -71,7 +91,7 @@
 * 0.7.0
 
 
-## 0.7.0 (beta 1) - 27th August 2025
+## 0.7.0-beta1 - 27th August 2025
 
 * moved private elements into **internal** (so as to hide properly);
 * dependencies;
@@ -79,7 +99,7 @@
 * boilerplate;
 
 
-## 0.7.0 (alpha 1) - 20th August 2025
+## 0.7.0-alpha1 - 20th August 2025
 
 * added `SplitAfterByte()`, `SplitAfterByteN()` ,`SplitAfterRune()` ,`SplitAfterRuneN()`, `SplitAfterAny()`, `SplitAfterAnyN()`, `SplitAfterAnyBytes()`, `SplitAfterAnyBytesN()`, `SplitAfterAnyRunes()`, `SplitAfterAnyRunesN()`;
 
@@ -89,7 +109,7 @@
 * documentation;
 
 
-## 0.6.0 (beta 1) - 18th August 2025
+## 0.6.0-beta1 - 18th August 2025
 
 * GitHub Actions;
 * `interface{}` => `any`;
@@ -97,18 +117,18 @@
 * documentation;
 
 
-## 0.6.0 (alpha 3) - 14th August 2025
+## 0.6.0-alpha3 - 14th August 2025
 
 * tidying;
 
 
-## 0.6.0 (alpha 2) - 24th February 2025
+## 0.6.0-alpha2 - 24th February 2025
 
 * added **examples/libver.go**;
 * boilerplate;
 
 
-## 0.6.0 (alpha 1) - 24th February 2025
+## 0.6.0-alpha1 - 24th February 2025
 
 * refactored all slice functions into **slices** package;
 * refactored all slice functions into **strings** package;
@@ -127,4 +147,7 @@
 ## 0.4.0 - 11th March 2019
 
 FIRST PUBLIC RELEASE
+
+
+<!-- ########################### end of file ########################### -->
 

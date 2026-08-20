@@ -1,11 +1,10 @@
 package slices_test
 
 import (
-	"fmt"
-	"strconv"
-
 	"github.com/synesissoftware/ANGoLS/slices"
 
+	"fmt"
+	"strconv"
 	"testing"
 )
 

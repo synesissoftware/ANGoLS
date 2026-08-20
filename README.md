@@ -7,7 +7,6 @@
 [![GitHub release](https://img.shields.io/github/v/release/synesissoftware/ANGoLS.svg)](https://github.com/synesissoftware/ANGoLS/releases/latest)
 [![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/ANGoLS)](https://github.com/synesissoftware/ANGoLS/commits/master)
 [![Go](https://github.com/synesissoftware/ANGoLS/actions/workflows/go.yml/badge.svg)](https://github.com/synesissoftware/ANGoLS/actions/workflows/go.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/synesissoftware/ANGoLS)](https://goreportcard.com/report/github.com/synesissoftware/ANGoLS)
 [![Go Reference](https://pkg.go.dev/badge/github.com/synesissoftware/ANGoLS.svg)](https://pkg.go.dev/github.com/synesissoftware/ANGoLS)
 
 
@@ -429,7 +428,11 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Related projects
 
-T.B.C.
+Projects in which **ANGoLS** is used include:
+
+* [**CLASP.Go**](https://github.com/synesissoftware/CLASP.Go/) (development/testing);
+* [**libCLImate.Go**](https://github.com/synesissoftware/libCLImate.Go/);
+* [**libpath.Go**](https://github.com/synesissoftware/libpath.Go/).
 
 
 ### License
